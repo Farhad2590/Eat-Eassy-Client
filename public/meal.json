@@ -1,0 +1,218 @@
+[
+    {
+        "category": "Breakfast",
+        "title": "Pancakes",
+        "image": "https://example.com/pancakes.jpg",
+        "rating": 4.5,
+        "price": 5.99,
+        "meal_image": "https://example.com/meal_pancakes.jpg",
+        "admin_name": "John Doe",
+        "description": "Fluffy pancakes served with syrup and butter.",
+        "ingredients": ["Flour", "Milk", "Eggs", "Sugar", "Baking powder"],
+        "post_time": "2024-06-01T08:30:00Z",
+        "reviews": [
+            {
+                "username": "alice",
+                "rating": 5,
+                "comment": "Delicious and fluffy!"
+            },
+            {
+                "username": "bob",
+                "rating": 4,
+                "comment": "Very good but a bit sweet."
+            }
+        ]
+    },
+    {
+        "category": "Lunch",
+        "title": "Grilled Chicken Salad",
+        "image": "https://example.com/grilled_chicken_salad.jpg",
+        "rating": 4.8,
+        "price": 10.99,
+        "meal_image": "https://example.com/meal_grilled_chicken_salad.jpg",
+        "admin_name": "Jane Smith",
+        "description": "Fresh salad with grilled chicken, vegetables, and vinaigrette.",
+        "ingredients": ["Chicken breast", "Lettuce", "Tomatoes", "Cucumbers", "Vinaigrette"],
+        "post_time": "2024-06-01T12:00:00Z",
+        "reviews": [
+            {
+                "username": "charlie",
+                "rating": 5,
+                "comment": "Healthy and tasty!"
+            },
+            {
+                "username": "dave",
+                "rating": 4.5,
+                "comment": "Perfect for a light lunch."
+            }
+        ]
+    },
+    {
+        "category": "Dinner",
+        "title": "Spaghetti Bolognese",
+        "image": "https://example.com/spaghetti_bolognese.jpg",
+        "rating": 4.7,
+        "price": 12.99,
+        "meal_image": "https://example.com/meal_spaghetti_bolognese.jpg",
+        "admin_name": "Michael Brown",
+        "description": "Classic Italian pasta with a rich meat sauce.",
+        "ingredients": ["Spaghetti", "Ground beef", "Tomato sauce", "Onions", "Garlic"],
+        "post_time": "2024-06-01T19:00:00Z",
+        "reviews": [
+            {
+                "username": "eve",
+                "rating": 5,
+                "comment": "Authentic and flavorful!"
+            },
+            {
+                "username": "frank",
+                "rating": 4.5,
+                "comment": "Really good, just like in Italy."
+            }
+        ]
+    },
+    {
+        "category": "Breakfast",
+        "title": "Omelette",
+        "image": "https://example.com/omelette.jpg",
+        "rating": 4.3,
+        "price": 6.49,
+        "meal_image": "https://example.com/meal_omelette.jpg",
+        "admin_name": "Alice Johnson",
+        "description": "Three-egg omelette with cheese, ham, and vegetables.",
+        "ingredients": ["Eggs", "Cheese", "Ham", "Bell peppers", "Onions"],
+        "post_time": "2024-06-02T08:30:00Z",
+        "reviews": [
+            {
+                "username": "george",
+                "rating": 4,
+                "comment": "Good start to the day."
+            },
+            {
+                "username": "hannah",
+                "rating": 4.5,
+                "comment": "Loved the cheesy goodness!"
+            }
+        ]
+    },
+    {
+        "category": "Lunch",
+        "title": "Turkey Sandwich",
+        "image": "https://example.com/turkey_sandwich.jpg",
+        "rating": 4.6,
+        "price": 8.49,
+        "meal_image": "https://example.com/meal_turkey_sandwich.jpg",
+        "admin_name": "Robert Lee",
+        "description": "Whole wheat sandwich with turkey, cheese, lettuce, and tomato.",
+        "ingredients": ["Whole wheat bread", "Turkey", "Cheese", "Lettuce", "Tomato"],
+        "post_time": "2024-06-02T12:00:00Z",
+        "reviews": [
+            {
+                "username": "isabella",
+                "rating": 5,
+                "comment": "Perfectly made sandwich."
+            },
+            {
+                "username": "jack",
+                "rating": 4.5,
+                "comment": "Fresh and tasty."
+            }
+        ]
+    },
+    {
+        "category": "Dinner",
+        "title": "Beef Stir Fry",
+        "image": "https://example.com/beef_stir_fry.jpg",
+        "rating": 4.8,
+        "price": 13.99,
+        "meal_image": "https://example.com/meal_beef_stir_fry.jpg",
+        "admin_name": "Karen Davis",
+        "description": "Tender beef with mixed vegetables in a savory sauce.",
+        "ingredients": ["Beef", "Broccoli", "Bell peppers", "Soy sauce", "Garlic"],
+        "post_time": "2024-06-02T19:00:00Z",
+        "reviews": [
+            {
+                "username": "liam",
+                "rating": 5,
+                "comment": "Best stir fry I've had."
+            },
+            {
+                "username": "mia",
+                "rating": 4.5,
+                "comment": "Great flavors and very filling."
+            }
+        ]
+    },
+    {
+        "category": "Breakfast",
+        "title": "Avocado Toast",
+        "image": "https://example.com/avocado_toast.jpg",
+        "rating": 4.7,
+        "price": 7.99,
+        "meal_image": "https://example.com/meal_avocado_toast.jpg",
+        "admin_name": "Emily White",
+        "description": "Toasted bread with mashed avocado, salt, and pepper.",
+        "ingredients": ["Bread", "Avocado", "Salt", "Pepper", "Olive oil"],
+        "post_time": "2024-06-03T08:30:00Z",
+        "reviews": [
+            {
+                "username": "noah",
+                "rating": 5,
+                "comment": "Simple and delicious!"
+            },
+            {
+                "username": "olivia",
+                "rating": 4.5,
+                "comment": "Healthy and tasty breakfast option."
+            }
+        ]
+    },
+    {
+        "category": "Lunch",
+        "title": "Caesar Salad",
+        "image": "https://example.com/caesar_salad.jpg",
+        "rating": 4.9,
+        "price": 9.49,
+        "meal_image": "https://example.com/meal_caesar_salad.jpg",
+        "admin_name": "David Clark",
+        "description": "Classic Caesar salad with romaine, croutons, and Caesar dressing.",
+        "ingredients": ["Romaine lettuce", "Croutons", "Caesar dressing", "Parmesan cheese"],
+        "post_time": "2024-06-03T12:00:00Z",
+        "reviews": [
+            {
+                "username": "sophia",
+                "rating": 5,
+                "comment": "Best Caesar salad I've had."
+            },
+            {
+                "username": "mason",
+                "rating": 4.5,
+                "comment": "Crisp and refreshing."
+            }
+        ]
+    },
+    {
+        "category": "Dinner",
+        "title": "Grilled Salmon",
+        "image": "https://example.com/grilled_salmon.jpg",
+        "rating": 4.9,
+        "price": 15.99,
+        "meal_image": "https://example.com/meal_grilled_salmon.jpg",
+        "admin_name": "Susan Harris",
+        "description": "Grilled salmon fillet with lemon and herbs.",
+        "ingredients": ["Salmon", "Lemon", "Dill", "Garlic", "Olive oil"],
+        "post_time": "2024-06-03T19:00:00Z",
+        "reviews": [
+            {
+                "username": "james",
+                "rating": 5,
+                "comment": "Perfectly cooked and flavorful."
+            },
+            {
+                "username": "ella",
+                "rating": 4.5,
+                "comment": "Healthy and delicious."
+            }
+        ]
+    }
+]
