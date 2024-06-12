@@ -2,13 +2,19 @@
     {
         "category": "Breakfast",
         "title": "Pancakes",
-        "image": "https://example.com/pancakes.jpg",
+        "image": "https://i.ibb.co/gZYvsvp/Breakfast-01.jpg",
         "rating": 4.5,
         "price": 5.99,
         "meal_image": "https://example.com/meal_pancakes.jpg",
         "admin_name": "John Doe",
         "description": "Fluffy pancakes served with syrup and butter.",
-        "ingredients": ["Flour", "Milk", "Eggs", "Sugar", "Baking powder"],
+        "ingredients": [
+            "Flour",
+            "Milk",
+            "Eggs",
+            "Sugar",
+            "Baking powder"
+        ],
         "post_time": "2024-06-01T08:30:00Z",
         "reviews": [
             {
@@ -26,13 +32,19 @@
     {
         "category": "Lunch",
         "title": "Grilled Chicken Salad",
-        "image": "https://example.com/grilled_chicken_salad.jpg",
+        "image": "https://i.ibb.co/0tsJPF4/Lunch-01.jpg",
         "rating": 4.8,
         "price": 10.99,
         "meal_image": "https://example.com/meal_grilled_chicken_salad.jpg",
         "admin_name": "Jane Smith",
         "description": "Fresh salad with grilled chicken, vegetables, and vinaigrette.",
-        "ingredients": ["Chicken breast", "Lettuce", "Tomatoes", "Cucumbers", "Vinaigrette"],
+        "ingredients": [
+            "Chicken breast",
+            "Lettuce",
+            "Tomatoes",
+            "Cucumbers",
+            "Vinaigrette"
+        ],
         "post_time": "2024-06-01T12:00:00Z",
         "reviews": [
             {
@@ -50,13 +62,19 @@
     {
         "category": "Dinner",
         "title": "Spaghetti Bolognese",
-        "image": "https://example.com/spaghetti_bolognese.jpg",
+        "image": "https://i.ibb.co/XF5ZQmz/Dinner-01.jpg",
         "rating": 4.7,
         "price": 12.99,
         "meal_image": "https://example.com/meal_spaghetti_bolognese.jpg",
         "admin_name": "Michael Brown",
         "description": "Classic Italian pasta with a rich meat sauce.",
-        "ingredients": ["Spaghetti", "Ground beef", "Tomato sauce", "Onions", "Garlic"],
+        "ingredients": [
+            "Spaghetti",
+            "Ground beef",
+            "Tomato sauce",
+            "Onions",
+            "Garlic"
+        ],
         "post_time": "2024-06-01T19:00:00Z",
         "reviews": [
             {
@@ -74,13 +92,19 @@
     {
         "category": "Breakfast",
         "title": "Omelette",
-        "image": "https://example.com/omelette.jpg",
+        "image": "https://i.ibb.co/7yL2FqK/Breakfast-02.jpg",
         "rating": 4.3,
         "price": 6.49,
         "meal_image": "https://example.com/meal_omelette.jpg",
         "admin_name": "Alice Johnson",
         "description": "Three-egg omelette with cheese, ham, and vegetables.",
-        "ingredients": ["Eggs", "Cheese", "Ham", "Bell peppers", "Onions"],
+        "ingredients": [
+            "Eggs",
+            "Cheese",
+            "Ham",
+            "Bell peppers",
+            "Onions"
+        ],
         "post_time": "2024-06-02T08:30:00Z",
         "reviews": [
             {
@@ -98,13 +122,19 @@
     {
         "category": "Lunch",
         "title": "Turkey Sandwich",
-        "image": "https://example.com/turkey_sandwich.jpg",
+        "image": "https://i.ibb.co/4PT1zd2/Lunch-02.jpg",
         "rating": 4.6,
         "price": 8.49,
         "meal_image": "https://example.com/meal_turkey_sandwich.jpg",
         "admin_name": "Robert Lee",
         "description": "Whole wheat sandwich with turkey, cheese, lettuce, and tomato.",
-        "ingredients": ["Whole wheat bread", "Turkey", "Cheese", "Lettuce", "Tomato"],
+        "ingredients": [
+            "Whole wheat bread",
+            "Turkey",
+            "Cheese",
+            "Lettuce",
+            "Tomato"
+        ],
         "post_time": "2024-06-02T12:00:00Z",
         "reviews": [
             {
@@ -122,13 +152,19 @@
     {
         "category": "Dinner",
         "title": "Beef Stir Fry",
-        "image": "https://example.com/beef_stir_fry.jpg",
+        "image": "https://i.ibb.co/W0MCFyr/Dinner-02.jpg",
         "rating": 4.8,
         "price": 13.99,
         "meal_image": "https://example.com/meal_beef_stir_fry.jpg",
         "admin_name": "Karen Davis",
         "description": "Tender beef with mixed vegetables in a savory sauce.",
-        "ingredients": ["Beef", "Broccoli", "Bell peppers", "Soy sauce", "Garlic"],
+        "ingredients": [
+            "Beef",
+            "Broccoli",
+            "Bell peppers",
+            "Soy sauce",
+            "Garlic"
+        ],
         "post_time": "2024-06-02T19:00:00Z",
         "reviews": [
             {
@@ -146,13 +182,19 @@
     {
         "category": "Breakfast",
         "title": "Avocado Toast",
-        "image": "https://example.com/avocado_toast.jpg",
+        "image": "https://i.ibb.co/GRmSv5k/Breakfast-03.jpg",
         "rating": 4.7,
         "price": 7.99,
         "meal_image": "https://example.com/meal_avocado_toast.jpg",
         "admin_name": "Emily White",
         "description": "Toasted bread with mashed avocado, salt, and pepper.",
-        "ingredients": ["Bread", "Avocado", "Salt", "Pepper", "Olive oil"],
+        "ingredients": [
+            "Bread",
+            "Avocado",
+            "Salt",
+            "Pepper",
+            "Olive oil"
+        ],
         "post_time": "2024-06-03T08:30:00Z",
         "reviews": [
             {
@@ -170,13 +212,18 @@
     {
         "category": "Lunch",
         "title": "Caesar Salad",
-        "image": "https://example.com/caesar_salad.jpg",
+        "image": "https://i.ibb.co/FgcvCsC/Lunch-03.jpg",
         "rating": 4.9,
         "price": 9.49,
         "meal_image": "https://example.com/meal_caesar_salad.jpg",
         "admin_name": "David Clark",
         "description": "Classic Caesar salad with romaine, croutons, and Caesar dressing.",
-        "ingredients": ["Romaine lettuce", "Croutons", "Caesar dressing", "Parmesan cheese"],
+        "ingredients": [
+            "Romaine lettuce",
+            "Croutons",
+            "Caesar dressing",
+            "Parmesan cheese"
+        ],
         "post_time": "2024-06-03T12:00:00Z",
         "reviews": [
             {
@@ -194,13 +241,19 @@
     {
         "category": "Dinner",
         "title": "Grilled Salmon",
-        "image": "https://example.com/grilled_salmon.jpg",
+        "image": "https://i.ibb.co/6twd6GS/Dinner-03.jpg",
         "rating": 4.9,
         "price": 15.99,
         "meal_image": "https://example.com/meal_grilled_salmon.jpg",
         "admin_name": "Susan Harris",
         "description": "Grilled salmon fillet with lemon and herbs.",
-        "ingredients": ["Salmon", "Lemon", "Dill", "Garlic", "Olive oil"],
+        "ingredients": [
+            "Salmon",
+            "Lemon",
+            "Dill",
+            "Garlic",
+            "Olive oil"
+        ],
         "post_time": "2024-06-03T19:00:00Z",
         "reviews": [
             {
