@@ -6,23 +6,25 @@ import { useEffect, useState } from 'react'
 
 import MealsCategory from './MealsCategory'
 import SharedTitle from '../../../Components/Shared/Sharedtitle/SharedTitle'
+import useMeals from '../../../hooks/useMeals'
 const TabCategories = () => {
-    const [meals, setMeals] = useState([])
-    console.log(meals);
-    useEffect(() => {
-        fetch('/meal.json')  // Adjust the path if necessary
-            .then(response => response.json())
-            .then(data => {
-                setMeals(data);
-                console.log(data);
-            })
-    }, []);
+    // const [meals, setMeals] = useState([])
+    // console.log(meals);
+    // useEffect(() => {
+    //     fetch('/meal.json')  // Adjust the path if necessary
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setMeals(data);
+    //             console.log(data);
+    //         })
+    // }, []);
+    const [meals] = useMeals();
 
     return (
         <Tabs className='bg-white p-5'>
             <div className=''>
                <SharedTitle heading="Food We Are Offering" subHeading="Best Meal Suggesion In town"></SharedTitle>
-                <div className="border border-dashed my-3"></div>
+                {meals.length}
                 <div className='flex items-center justify-center'>
                     <TabList>
                         <Tab>All</Tab>
@@ -36,8 +38,8 @@ const TabCategories = () => {
                     <div className='grid grid-cols-1 lg:grid-cols-3'>
                         {meals
                         .slice(0,3)
-                            .map(room => (
-                                <MealsCategory key={room._id} room={room} />
+                            .map(meal => (
+                                <MealsCategory key={meal._id} meal={meal} />
                             ))}
                     </div>
                 </TabPanel>
@@ -46,8 +48,9 @@ const TabCategories = () => {
                     <div className='grid grid-cols-1 lg:grid-cols-3'>
                         {meals
                             .filter(r => r.category === 'Breakfast')
-                            .map(room => (
-                                <MealsCategory key={room._id} room={room} />
+                            .slice(0,3)
+                            .map(meal => (
+                                <MealsCategory key={meal._id} meal={meal} />
                             ))}
                     </div>
                 </TabPanel>
@@ -56,8 +59,9 @@ const TabCategories = () => {
                     <div className='grid grid-cols-1 lg:grid-cols-3'>
                         {meals
                             .filter(r => r.category === 'Lunch')
-                            .map(room => (
-                                <MealsCategory key={room._id} room={room} />
+                            .slice(0,3)
+                            .map(meal => (
+                                <MealsCategory key={meal._id} meal={meal} />
                             ))}
                     </div>
                 </TabPanel>
@@ -66,8 +70,9 @@ const TabCategories = () => {
                     <div className='grid grid-cols-1 lg:grid-cols-3'>
                         {meals
                             .filter(r => r.category === 'Dinner')
-                            .map(room => (
-                                <MealsCategory key={room._id} room={room} />
+                            .slice(0,3)
+                            .map(meal => (
+                                <MealsCategory key={meal._id} meal={meal} />
                             ))}
                     </div>
                 </TabPanel>
