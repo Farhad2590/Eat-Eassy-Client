@@ -2,22 +2,11 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 
-import { useEffect, useState } from 'react'
-
-import MealsCategory from './MealsCategory'
+import MealsCategory from '../../../Components/Shared/Shared/MealsCategory'
 import SharedTitle from '../../../Components/Shared/Sharedtitle/SharedTitle'
 import useMeals from '../../../hooks/useMeals'
 const TabCategories = () => {
-    // const [meals, setMeals] = useState([])
-    // console.log(meals);
-    // useEffect(() => {
-    //     fetch('/meal.json')  // Adjust the path if necessary
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setMeals(data);
-    //             console.log(data);
-    //         })
-    // }, []);
+
     const [meals] = useMeals();
 
     return (
@@ -35,7 +24,7 @@ const TabCategories = () => {
                     </TabList>
                 </div>
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 '>
                         {meals
                         .slice(0,3)
                             .map(meal => (
@@ -45,7 +34,7 @@ const TabCategories = () => {
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 '>
                         {meals
                             .filter(r => r.category === 'Breakfast')
                             .slice(0,3)
@@ -56,7 +45,7 @@ const TabCategories = () => {
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 '>
                         {meals
                             .filter(r => r.category === 'Lunch')
                             .slice(0,3)
@@ -67,7 +56,7 @@ const TabCategories = () => {
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 '>
                         {meals
                             .filter(r => r.category === 'Dinner')
                             .slice(0,3)

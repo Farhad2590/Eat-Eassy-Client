@@ -6,7 +6,7 @@ import { LuCircleDollarSign } from "react-icons/lu";
 const MealsCategory = ({ meal }) => {
     const { _id, image, title, price, description, rating } = meal;
     return (
-        <div className="w-96 h-[30rem] border rounded-lg shadow-md flex flex-col">
+        <div className="border rounded-lg shadow-md flex flex-col mb-10">
             <div className="h-60 overflow-hidden rounded-t-lg">
                 <img
                     src={image}
