@@ -1,65 +1,52 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
+
 // import axios from 'axios'
 import useAuth from '../../hooks/useAuth'
 import toast from 'react-hot-toast'
+import useAxiosPublic from '../../hooks/useAxiosPublic'
+import { useForm } from "react-hook-form"
+import SocialLogin from '../../Components/Shared/SocialLogin/SocialLogin'
+
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
   const {
     createUser,
-    signInWithGoogle,
-    // updateUserProfile,
-    loading,
-    setLoading,
+    updateUserProfile,
   } = useAuth()
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    const form = e.target
-    // const name = form.name.value
-    const email = form.email.value
-    const password = form.password.value
-    const image = form.image.files[0]
-    const formData = new FormData()
-    formData.append('image', image)
 
-    try {
-      setLoading(true)
-      // // 1. Upload image and get image url
-      // const { data } = await axios.post(
-      //   `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY
-      //   }`,
-      //   formData
-      // )
-      // console.log(data.data.display_url)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const onSubmit = data => {
 
-      //2. User Registration
-      const result = await createUser(email, password)
-      console.log(result)
+    createUser(data.email, data.password)
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            // create user entry in the database
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  console.log('user added to the database')
+                  reset();
+                  toast.success('User created successfully')
+                  navigate('/');
+                }
+              })
 
-      // 3. Save username and photo in firebase
-      // await updateUserProfile(name, data.data.display_url)
-      navigate('/')
-      toast.success('Signup Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err.message)
-    }
-  }
 
-  // handle google signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-
-      navigate('/')
-      toast.success('Signup Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err.message)
-    }
-  }
+          })
+          .catch(error => console.log(error))
+      })
+  };
+  
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
@@ -68,77 +55,48 @@ const SignUp = () => {
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
           <p className='text-sm text-gray-400'>Welcome to StayVista</p>
         </div>
-        <form
-          noValidate=''
-          action=''
-          className='space-y-6 ng-untouched ng-pristine ng-valid'
-          onSubmit={handleSubmit}
-        >
-          <div className='space-y-4'>
-            <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
-                Name
-              </label>
-              <input
-                type='text'
-                name='name'
-                id='name'
-                placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-orange-500 bg-gray-200 text-gray-900'
-                data-temp-mail-org='0'
-              />
-            </div>
-            <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
-                Select Image:
-              </label>
-              <input
-                required
-                type='file'
-                id='image'
-                name='image'
-                accept='image/*'
-              />
-            </div>
-            <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
-                Email address
-              </label>
-              <input
-                type='email'
-                name='email'
-                id='email'
-                required
-                placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-orange-500 bg-gray-200 text-gray-900'
-                data-temp-mail-org='0'
-              />
-            </div>
-            <div>
-              <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
-                  Password
-                </label>
-              </div>
-              <input
-                type='password'
-                name='password'
-                autoComplete='new-password'
-                id='password'
-                required
-                placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-orange-500 bg-gray-200 text-gray-900'
-              />
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
+            {errors.name && <span className="text-red-600">Name is required</span>}
           </div>
-
-          <div>
-            <button
-              type='submit'
-              className='bg-orange-500 w-full rounded-md py-3 text-white'
-            >
-              Continue
-            </button>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+            {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+            {errors.email && <span className="text-red-600">Email is required</span>}
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input type="password"  {...register("password", {
+              required: true,
+              minLength: 6,
+              maxLength: 20,
+              pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+            })} placeholder="password" className="input input-bordered" />
+            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+            {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+          <div className="form-control mt-6">
+            <input className="btn btn-primary" type="submit" value="Sign Up" />
           </div>
         </form>
         <div className='flex items-center pt-4 space-x-1'>
@@ -148,15 +106,7 @@ const SignUp = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <button
-          disabled={loading}
-          onClick={handleGoogleSignIn}
-          className='disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
-        >
-          <FcGoogle size={32} />
-
-          <p>Continue with Google</p>
-        </button>
+        <SocialLogin></SocialLogin>
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
           <Link

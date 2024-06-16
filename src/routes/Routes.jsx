@@ -4,9 +4,11 @@ import Home from '../pages/Home/Home'
 import ErrorPage from '../pages/Error/ErrorPage'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/Signup/SignUp'
-import Meals from '../pages/Meals/Meals'
+// import Meals from '../pages/Meals/Meals'
 import MealDetails from '../pages/MealDetails/MealDetails'
 import Meal from '../pages/Meals/Meal'
+import Dashboard from '../Layouts/Dashboard';
+import ManageUser from '../pages/Dashboards/ManageUser/ManageUser'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -29,6 +31,16 @@ export const router = createBrowserRouter([
         element: <MealDetails />,
       },
     ],
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'allUsers',
+        element: <ManageUser></ManageUser>
+      }
+    ]
   },
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },

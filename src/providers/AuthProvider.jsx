@@ -14,6 +14,7 @@ import {
 
 import axios from 'axios'
 import { app } from '../firebase/firebase.configue'
+import toast from 'react-hot-toast'
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
@@ -44,9 +45,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true)
-    await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-      withCredentials: true,
-    })
+    toast.success('Logout successfull')
     return signOut(auth)
   }
 

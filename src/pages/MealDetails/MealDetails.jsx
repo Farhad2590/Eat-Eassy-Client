@@ -9,6 +9,7 @@ import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const MealDetails = () => {
@@ -49,12 +50,13 @@ const MealDetails = () => {
             const { data } = await axios.post(
                 'http://localhost:8000/reviews', reviewData)
             console.log(data)
-            Swal.fire({
-                title: 'Success!',
-                text: ' Review Posted Successfully',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
+            toast.success('Review Posted Successfully')
+            // Swal.fire({
+            //     title: 'Success!',
+            //     text: ' Review Posted Successfully',
+            //     icon: 'success',
+            //     confirmButtonText: 'Cool'
+            // })
             
         } catch (err) {
             console.log(err)

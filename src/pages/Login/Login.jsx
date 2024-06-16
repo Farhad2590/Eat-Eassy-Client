@@ -1,13 +1,13 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hooks/useAuth'
 import toast from 'react-hot-toast'
+import SocialLogin from '../../Components/Shared/SocialLogin/SocialLogin'
 
 const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
-  const { signInWithGoogle, signIn, loading, setLoading } = useAuth()
+  const {  signIn,  setLoading } = useAuth()
   // const [email, setEmail] = useState('')
 
   const handleSubmit = async e => {
@@ -30,18 +30,7 @@ const Login = () => {
   }
 
 
-  // handle google signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-
-      navigate(from)
-      toast.success('Signup Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err.message)
-    }
-  }
+  
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -111,15 +100,7 @@ const Login = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <button
-          disabled={loading}
-          onClick={handleGoogleSignIn}
-          className='disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
-        >
-          <FcGoogle size={32} />
-
-          <p>Continue with Google</p>
-        </button>
+        <SocialLogin></SocialLogin>
         <p className='px-6 text-sm text-center text-gray-400'>
           Don&apos;t have an account yet?{' '}
           <Link
