@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import {  FaUsers } from "react-icons/fa";
 import toast from 'react-hot-toast'
+import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 
 
 
@@ -27,6 +28,7 @@ const ManageUser = () => {
     }
     return (
         <div>
+            <SharedTitle heading="All Users"></SharedTitle>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}

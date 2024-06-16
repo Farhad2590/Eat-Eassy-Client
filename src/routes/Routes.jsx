@@ -9,6 +9,9 @@ import MealDetails from '../pages/MealDetails/MealDetails'
 import Meal from '../pages/Meals/Meal'
 import Dashboard from '../Layouts/Dashboard';
 import ManageUser from '../pages/Dashboards/ManageUser/ManageUser'
+import Addmeals from '../pages/Dashboards/Addmeals/Addmeals'
+import Managemeals from '../pages/Dashboards/ManageMeals/Managemeals'
+import AllReviews from '../pages/Dashboards/AllReviews/AllReviews'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -39,6 +42,18 @@ export const router = createBrowserRouter([
       {
         path: 'allUsers',
         element: <ManageUser></ManageUser>
+      },
+      {
+        path: 'addMeals',
+        element: <Addmeals></Addmeals>
+      },
+      {
+        path:'allMeals',
+        element:<Managemeals></Managemeals>
+      },
+      {
+        path:'allReviews',
+        element:<AllReviews></AllReviews>
       }
     ]
   },

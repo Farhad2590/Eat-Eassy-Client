@@ -17,17 +17,14 @@ const MealDetails = () => {
     const [reviewFood, setReviewFood] = useState([]);
     const meal = useLoaderData()
     const { id } = useParams()
-    const [likeCount, setLikeCount] = useState(0);
+    
     const {user} = useAuth()
     console.log(user);
-    // Function to handle the click event
-    const handleLike = () => {
-        setLikeCount(likeCount + 1);
-    };
+   
     const mealDetails = meal.find(meals => meals._id === id);
     // console.log(mealDetails);
 
-    const { _id, image, title, admin_name, description, category, ingredients, post_time } = mealDetails;
+    const { _id, image, title,likes, admin_name, description, category, ingredients, post_time } = mealDetails;
     const handleReviewSubmit = async e => {
         e.preventDefault()
         const form = e.target
@@ -51,13 +48,6 @@ const MealDetails = () => {
                 'http://localhost:8000/reviews', reviewData)
             console.log(data)
             toast.success('Review Posted Successfully')
-            // Swal.fire({
-            //     title: 'Success!',
-            //     text: ' Review Posted Successfully',
-            //     icon: 'success',
-            //     confirmButtonText: 'Cool'
-            // })
-            
         } catch (err) {
             console.log(err)
         }
@@ -115,8 +105,8 @@ const MealDetails = () => {
                 <div className="flex mb-5">
                     <button className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
                     <div className="flex px-3 items-center">
-                        <FcLike className="text-4xl mr-2" onClick={handleLike}></FcLike>
-                        <p className="font-bold text-lg">{likeCount}</p>
+                        <FcLike className="text-4xl mr-2"></FcLike>
+                        <p className="font-bold text-lg">{likes}</p>
                     </div>
                 </div>
                 <div>

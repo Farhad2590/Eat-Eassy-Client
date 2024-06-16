@@ -14,7 +14,8 @@
             "Mustard Oil",
             "Salt"
         ],
-        "post_time": "2024-06-01T08:30:00Z"
+        "post_time": "2024-06-01T08:30:00Z",
+        "likes": 25
     
     },
     {
@@ -32,7 +33,8 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-01T12:00:00Z"
+        "post_time": "2024-06-01T12:00:00Z",
+        "likes": 20
     },
     {
         "category": "Dinner",
@@ -49,7 +51,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-01T19:00:00Z"
+        "post_time": "2024-06-01T19:00:00Z",
+        "likes": 18
     },
     {
         "category": "Breakfast",
@@ -66,7 +69,8 @@
             "Mustard Oil",
             "Spices"
         ],
-        "post_time": "2024-06-02T08:30:00Z"
+        "post_time": "2024-06-02T08:30:00Z",
+        "likes": 21
     },
     {
         "category": "Lunch",
@@ -83,7 +87,8 @@
             "Mashed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-02T12:00:00Z"
+        "post_time": "2024-06-02T12:00:00Z",
+        "likes": 14
     },
     {
         "category": "Dinner",
@@ -100,7 +105,8 @@
             "Salad Greens",
             "Papadum"
         ],
-        "post_time": "2024-06-02T19:00:00Z"
+        "post_time": "2024-06-02T19:00:00Z",
+        "likes": 15
     },
     {
         "category": "Breakfast",
@@ -117,7 +123,8 @@
             "Papor",
             "Mustard Oil"
         ],
-        "post_time": "2024-06-03T08:30:00Z"
+        "post_time": "2024-06-03T08:30:00Z",
+        "likes": 26
     },
     {
         "category": "Lunch",
@@ -134,7 +141,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-03T12:00:00Z"
+        "post_time": "2024-06-03T12:00:00Z",
+        "likes": 23
     },
     {
         "category": "Dinner",
@@ -151,7 +159,8 @@
             "Spices",
             "Mustard Oil"
         ],
-        "post_time": "2024-06-03T19:00:00Z"
+        "post_time": "2024-06-03T19:00:00Z",
+        "likes": 36
     },
     {
         "category": "Breakfast",
@@ -168,7 +177,8 @@
             "Chicken",
             "Salad Greens"
         ],
-        "post_time": "2024-06-04T08:30:00Z"
+        "post_time": "2024-06-04T08:30:00Z",
+        "likes": 20
     },
     {
         "category": "Lunch",
@@ -185,7 +195,8 @@
             "Spinach",
             "Spices"
         ],
-        "post_time": "2024-06-04T12:00:00Z"
+        "post_time": "2024-06-04T12:00:00Z",
+        "likes": 29
     },
     {
         "category": "Dinner",
@@ -202,7 +213,8 @@
             "Spices",
             "Salad Greens"
         ],
-        "post_time": "2024-06-04T19:00:00Z"
+        "post_time": "2024-06-04T19:00:00Z",
+        "likes": 15
     },
     {
         "category": "Breakfast",
@@ -219,7 +231,8 @@
             "Egg",
             "Spices"
         ],
-        "post_time": "2024-06-05T08:30:00Z"
+        "post_time": "2024-06-05T08:30:00Z",
+        "likes": 19
     },
     {
         "category": "Lunch",
@@ -235,7 +248,8 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-05T12:00:00Z"
+        "post_time": "2024-06-05T12:00:00Z",
+        "likes": 17
     },
     {
         "category": "Dinner",
@@ -252,7 +266,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-05T19:00:00Z"
+        "post_time": "2024-06-05T19:00:00Z",
+        "likes": 14
     },
     {
         "category": "Breakfast",
@@ -269,7 +284,8 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-06T08:30:00Z"
+        "post_time": "2024-06-06T08:30:00Z",
+        "likes": 13
     },
     {
         "category": "Lunch",
@@ -285,7 +301,8 @@
             "Spices",
             "Salad Greens"
         ],
-        "post_time": "2024-06-06T12:00:00Z"
+        "post_time": "2024-06-06T12:00:00Z",
+        "likes": 11
     },
     {
         "category": "Dinner",
@@ -299,7 +316,8 @@
             "Chicken",
             "Yog"
         ],
-        "post_time": "2024-06-06T19:00:00Z"
+        "post_time": "2024-06-06T19:00:00Z",
+        "likes": 28
     },
     {
         "category": "Breakfast",
@@ -316,7 +334,8 @@
             "Mustard Oil",
             "Spices"
         ],
-        "post_time": "2024-06-07T08:30:00Z"
+        "post_time": "2024-06-07T08:30:00Z",
+        "likes": 16
     },
     {
         "category": "Lunch",
@@ -333,7 +352,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-07T12:00:00Z"
+        "post_time": "2024-06-07T12:00:00Z",
+        "likes": 19
     },
     {
         "category": "Dinner",
@@ -349,7 +369,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-07T19:00:00Z"
+        "post_time": "2024-06-07T19:00:00Z",
+        "likes": 23
     },
     {
         "category": "Breakfast",
@@ -365,7 +386,8 @@
             "Tea Leaves",
             "Water"
         ],
-        "post_time": "2024-06-08T08:30:00Z"
+        "post_time": "2024-06-08T08:30:00Z",
+        "likes": 17
     },
     {
         "category": "Lunch",
@@ -381,7 +403,8 @@
             "Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-08T12:00:00Z"
+        "post_time": "2024-06-08T12:00:00Z",
+        "likes": 15
     },
     {
         "category": "Dinner",
@@ -397,7 +420,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-08T19:00:00Z"
+        "post_time": "2024-06-08T19:00:00Z",
+        "likes": 24
     },
     {
         "category": "Breakfast",
@@ -414,7 +438,8 @@
             "Pickles",
             "Spices"
         ],
-        "post_time": "2024-06-09T08:30:00Z"
+        "post_time": "2024-06-09T08:30:00Z",
+        "likes": 25
     },
     {
         "category": "Lunch",
@@ -431,14 +456,16 @@
             "Vegetable Bharta",
             "Spices"
         ],
-        "post_time": "2024-06-09T12:00:00Z"
+        "post_time": "2024-06-09T12:00:00Z",
+        "likes": 26
     },
     {
         "category": "Dinner",
         "title": "Chicken Korma with Naan and Cucumber Raita",
         "image": "https://i.ibb.co/rfPyZ0y/Dinner09.jpg",
         "rating": 4.8,
-        "post_time": "2024-06-09T19:00:00Z"
+        "post_time": "2024-06-09T19:00:00Z",
+        "likes": 28
     },
     {
         "category": "Breakfast",
@@ -455,7 +482,8 @@
             "Spices",
             "Bread"
         ],
-        "post_time": "2024-06-10T08:30:00Z"
+        "post_time": "2024-06-10T08:30:00Z",
+        "likes": 30
     },
     {
         "category": "Lunch",
@@ -472,7 +500,8 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-10T12:00:00Z"
+        "post_time": "2024-06-10T12:00:00Z",
+        "likes": 21
     },
     {
         "category": "Dinner",
@@ -489,6 +518,7 @@
             "Papadum",
             "Spices"
         ],
-        "post_time": "2024-06-10T19:00:00Z"
+        "post_time": "2024-06-10T19:00:00Z",
+        "likes": 18
     }
 ]
