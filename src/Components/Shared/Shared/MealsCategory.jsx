@@ -1,6 +1,7 @@
 
 import { FaStar } from "react-icons/fa";
 import { LuCircleDollarSign } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 
 const MealsCategory = ({ meal }) => {
@@ -36,14 +37,18 @@ const MealsCategory = ({ meal }) => {
                 </div>
             </div>
             <div className="p-4">
-                <button
-                    className="w-full h-12 py-2 text-white bg-orange-500 rounded-lg shadow-none hover:scale-105 focus:scale-105 active:scale-100 transition-transform duration-300 font-bold"
-                >
-                    View Details
-                </button>
+                <Link to={`/meal/${_id}`}>
+                    <button
+                        className="w-full h-12 py-2 text-white bg-orange-500 rounded-lg shadow-none hover:scale-105 focus:scale-105 active:scale-100 transition-transform duration-300 font-bold"
+                    >
+                        View Details
+                    </button>
+                </Link>
             </div>
         </div>
     );
 };
 
 export default MealsCategory;
+
+

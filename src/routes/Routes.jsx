@@ -5,6 +5,8 @@ import ErrorPage from '../pages/Error/ErrorPage'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/Signup/SignUp'
 import Meals from '../pages/Meals/Meals'
+import MealDetails from '../pages/MealDetails/MealDetails'
+import Meal from '../pages/Meals/Meal'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -19,12 +21,13 @@ export const router = createBrowserRouter([
       },
       {
         path: '/allMeals',
-        element: <Meals />,
+        element: <Meal />,
       },
-      // {
-      //   path: '/room/:id',
-      //   element: <RoomDetails />,
-      // },
+      {
+        path: '/meal/:id',
+        loader: () => fetch('http://localhost:8000/meals'),
+        element: <MealDetails />,
+      },
     ],
   },
   { path: '/login', element: <Login /> },

@@ -14,19 +14,8 @@
             "Mustard Oil",
             "Salt"
         ],
-        "post_time": "2024-06-01T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sadia",
-                "rating": 5,
-                "comment": "Authentic Bangladeshi flavors!"
-            },
-            {
-                "username": "arif",
-                "rating": 4,
-                "comment": "Perfect for a hearty breakfast."
-            }
-        ]
+        "post_time": "2024-06-01T08:30:00Z"
+    
     },
     {
         "category": "Lunch",
@@ -43,19 +32,7 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-01T12:00:00Z",
-        "reviews": [
-            {
-                "username": "ahmed",
-                "rating": 5,
-                "comment": "Delicious and filling!"
-            },
-            {
-                "username": "tahmina",
-                "rating": 4.5,
-                "comment": "Perfect balance of flavors."
-            }
-        ]
+        "post_time": "2024-06-01T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -72,19 +49,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-01T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sakib",
-                "rating": 5,
-                "comment": "Tastes just like home-cooked!"
-            },
-            {
-                "username": "anika",
-                "rating": 4.5,
-                "comment": "Satisfying dinner option."
-            }
-        ]
+        "post_time": "2024-06-01T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -101,19 +66,7 @@
             "Mustard Oil",
             "Spices"
         ],
-        "post_time": "2024-06-02T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sabrina",
-                "rating": 4,
-                "comment": "Good start to the day."
-            },
-            {
-                "username": "anis",
-                "rating": 4.5,
-                "comment": "Authentic flavors."
-            }
-        ]
+        "post_time": "2024-06-02T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -130,19 +83,7 @@
             "Mashed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-02T12:00:00Z",
-        "reviews": [
-            {
-                "username": "rafiq",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfectly cooked."
-            }
-        ]
+        "post_time": "2024-06-02T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -159,19 +100,7 @@
             "Salad Greens",
             "Papadum"
         ],
-        "post_time": "2024-06-02T19:00:00Z",
-        "reviews": [
-            {
-                "username": "samina",
-                "rating": 5,
-                "comment": "Wonderful flavors!"
-            },
-            {
-                "username": "kamal",
-                "rating": 4.5,
-                "comment": "Satisfying and filling."
-            }
-        ]
+        "post_time": "2024-06-02T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -188,19 +117,7 @@
             "Papor",
             "Mustard Oil"
         ],
-        "post_time": "2024-06-03T08:30:00Z",
-        "reviews": [
-            {
-                "username": "rafi",
-                "rating": 5,
-                "comment": "Perfectly spiced!"
-            },
-            {
-                "username": "farzana",
-                "rating": 4.5,
-                "comment": "Authentic Bengali breakfast."
-            }
-        ]
+        "post_time": "2024-06-03T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -217,19 +134,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-03T12:00:00Z",
-        "reviews": [
-            {
-                "username": "nazia",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "saif",
-                "rating": 4.5,
-                "comment": "Great meal option."
-            }
-        ]
+        "post_time": "2024-06-03T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -246,19 +151,7 @@
             "Spices",
             "Mustard Oil"
         ],
-        "post_time": "2024-06-03T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sakib",
-                "rating": 5,
-                "comment": "Fantastic flavors!"
-            },
-            {
-                "username": "tina",
-                "rating": 4.5,
-                "comment": "Delicious and satisfying."
-            }
-        ]
+        "post_time": "2024-06-03T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -275,19 +168,7 @@
             "Chicken",
             "Salad Greens"
         ],
-        "post_time": "2024-06-04T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sumon",
-                "rating": 5,
-                "comment": "Delicious and filling!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Great choice for breakfast."
-            }
-        ]
+        "post_time": "2024-06-04T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -304,19 +185,7 @@
             "Spinach",
             "Spices"
         ],
-        "post_time": "2024-06-04T12:00:00Z",
-        "reviews": [
-            {
-                "username": "imran",
-                "rating": 5,
-                "comment": "Excellent dish!"
-            },
-            {
-                "username": "sadia",
-                "rating": 4.5,
-                "comment": "Authentic flavors."
-            }
-        ]
+        "post_time": "2024-06-04T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -333,19 +202,7 @@
             "Spices",
             "Salad Greens"
         ],
-        "post_time": "2024-06-04T19:00:00Z",
-        "reviews": [
-            {
-                "username": "zara",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "rafiq",
-                "rating": 4.5,
-                "comment": "Perfectly cooked biryani."
-            }
-        ]
+        "post_time": "2024-06-04T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -362,19 +219,7 @@
             "Egg",
             "Spices"
         ],
-        "post_time": "2024-06-05T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sara",
-                "rating": 4,
-                "comment": "Good breakfast option."
-            },
-            {
-                "username": "tamim",
-                "rating": 4.5,
-                "comment": "Flavorful and satisfying."
-            }
-        ]
+        "post_time": "2024-06-05T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -390,19 +235,7 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-05T12:00:00Z",
-        "reviews": [
-            {
-                "username": "sami",
-                "rating": 5,
-                "comment": "Delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Great flavors."
-            }
-        ]
+        "post_time": "2024-06-05T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -419,19 +252,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-05T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sakib",
-                "rating": 5,
-                "comment": "Amazing flavors!"
-            },
-            {
-                "username": "tina",
-                "rating": 4.5,
-                "comment": "Delicious and creamy."
-            }
-        ]
+        "post_time": "2024-06-05T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -448,19 +269,7 @@
             "Mixed Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-06T08:30:00Z",
-        "reviews": [
-            {
-                "username": "imran",
-                "rating": 4,
-                "comment": "Nice breakfast combination."
-            },
-            {
-                "username": "anika",
-                "rating": 4.5,
-                "comment": "Flavorsome and satisfying."
-            }
-        ]
+        "post_time": "2024-06-06T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -476,19 +285,7 @@
             "Spices",
             "Salad Greens"
         ],
-        "post_time": "2024-06-06T12:00:00Z",
-        "reviews": [
-            {
-                "username": "rafiq",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfectly cooked biryani."
-            }
-        ]
+        "post_time": "2024-06-06T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -502,19 +299,7 @@
             "Chicken",
             "Yog"
         ],
-        "post_time": "2024-06-06T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sabrina",
-                "rating": 5,
-                "comment": "Wonderful flavors!"
-            },
-            {
-                "username": "kamal",
-                "rating": 4.5,
-                "comment": "Satisfying and creamy."
-            }
-        ]
+        "post_time": "2024-06-06T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -531,19 +316,7 @@
             "Mustard Oil",
             "Spices"
         ],
-        "post_time": "2024-06-07T08:30:00Z",
-        "reviews": [
-            {
-                "username": "rafiq",
-                "rating": 5,
-                "comment": "Authentic and delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfect breakfast choice."
-            }
-        ]
+        "post_time": "2024-06-07T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -560,19 +333,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-07T12:00:00Z",
-        "reviews": [
-            {
-                "username": "sabina",
-                "rating": 5,
-                "comment": "Delicious and satisfying!"
-            },
-            {
-                "username": "tamim",
-                "rating": 4.5,
-                "comment": "Great combination."
-            }
-        ]
+        "post_time": "2024-06-07T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -588,19 +349,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-07T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sami",
-                "rating": 5,
-                "comment": "Amazing flavors!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfectly cooked."
-            }
-        ]
+        "post_time": "2024-06-07T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -616,19 +365,7 @@
             "Tea Leaves",
             "Water"
         ],
-        "post_time": "2024-06-08T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sumaiya",
-                "rating": 4,
-                "comment": "Sweet and comforting."
-            },
-            {
-                "username": "anika",
-                "rating": 4.5,
-                "comment": "Traditional flavors."
-            }
-        ]
+        "post_time": "2024-06-08T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -644,19 +381,7 @@
             "Vegetables",
             "Spices"
         ],
-        "post_time": "2024-06-08T12:00:00Z",
-        "reviews": [
-            {
-                "username": "rafi",
-                "rating": 5,
-                "comment": "Delicious!"
-            },
-            {
-                "username": "sadia",
-                "rating": 4.5,
-                "comment": "Light and flavorful."
-            }
-        ]
+        "post_time": "2024-06-08T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -672,19 +397,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-08T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sakina",
-                "rating": 5,
-                "comment": "Excellent flavors!"
-            },
-            {
-                "username": "tahmid",
-                "rating": 4.5,
-                "comment": "Tasty and well-cooked."
-            }
-        ]
+        "post_time": "2024-06-08T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -701,19 +414,7 @@
             "Pickles",
             "Spices"
         ],
-        "post_time": "2024-06-09T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sadia",
-                "rating": 4,
-                "comment": "Good breakfast choice."
-            },
-            {
-                "username": "tamim",
-                "rating": 4.5,
-                "comment": "Crunchy and flavorful."
-            }
-        ]
+        "post_time": "2024-06-09T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -730,38 +431,14 @@
             "Vegetable Bharta",
             "Spices"
         ],
-        "post_time": "2024-06-09T12:00:00Z",
-        "reviews": [
-            {
-                "username": "rafiq",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfectly cooked."
-            }
-        ]
+        "post_time": "2024-06-09T12:00:00Z"
     },
     {
         "category": "Dinner",
         "title": "Chicken Korma with Naan and Cucumber Raita",
         "image": "https://i.ibb.co/rfPyZ0y/Dinner09.jpg",
         "rating": 4.8,
-        "post_time": "2024-06-09T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sabina",
-                "rating": 5,
-                "comment": "Rich and flavorful!"
-            },
-            {
-                "username": "kamal",
-                "rating": 4.5,
-                "comment": "Delicious dinner option."
-            }
-        ]
+        "post_time": "2024-06-09T19:00:00Z"
     },
     {
         "category": "Breakfast",
@@ -778,19 +455,7 @@
             "Spices",
             "Bread"
         ],
-        "post_time": "2024-06-10T08:30:00Z",
-        "reviews": [
-            {
-                "username": "sadia",
-                "rating": 4.5,
-                "comment": "Great twist on breakfast!"
-            },
-            {
-                "username": "anis",
-                "rating": 4.5,
-                "comment": "Delicious and filling."
-            }
-        ]
+        "post_time": "2024-06-10T08:30:00Z"
     },
     {
         "category": "Lunch",
@@ -807,19 +472,7 @@
             "Salad Greens",
             "Spices"
         ],
-        "post_time": "2024-06-10T12:00:00Z",
-        "reviews": [
-            {
-                "username": "rafiq",
-                "rating": 5,
-                "comment": "Absolutely delicious!"
-            },
-            {
-                "username": "nadia",
-                "rating": 4.5,
-                "comment": "Perfectly balanced flavors."
-            }
-        ]
+        "post_time": "2024-06-10T12:00:00Z"
     },
     {
         "category": "Dinner",
@@ -836,18 +489,6 @@
             "Papadum",
             "Spices"
         ],
-        "post_time": "2024-06-10T19:00:00Z",
-        "reviews": [
-            {
-                "username": "sakib",
-                "rating": 5,
-                "comment": "Fantastic flavors!"
-            },
-            {
-                "username": "anika",
-                "rating": 4.5,
-                "comment": "Delicious and satisfying."
-            }
-        ]
+        "post_time": "2024-06-10T19:00:00Z"
     }
 ]
