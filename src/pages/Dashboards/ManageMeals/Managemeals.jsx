@@ -3,6 +3,7 @@ import useMeals from "../../../hooks/useMeals";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 
 
 const Managemeals = () => {
@@ -38,79 +39,78 @@ const Managemeals = () => {
             }
         });
     }
-    
+
     return (
         <div>
-            <div>
-                <div className="overflow-x-auto">
-                    <table className="table w-full">
-                        {/* head */}
-                        <thead>
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>Image</th>
-                                <th>Item Name</th>
-                                <th>Price</th>
-                                <th>Likes</th>
-                                <th>Distributer Name</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                                <th>View Meal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                menu.map((item, index) => <tr key={item._id}>
-                                    <td>
-                                        {index + 1}
-                                    </td>
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                                </div>
+            <SharedTitle heading="All Meals" subHeading="Our Regular Meals"></SharedTitle>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>Image</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                            <th>Likes</th>
+                            <th>Distributer Name</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                            <th>View Meal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            menu.map((item, index) => <tr key={item._id}>
+                                <td>
+                                    {index + 1}
+                                </td>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        {item.title}
-                                    </td>
-                                    <td className="text-right">${item.price}</td>
-                                    <td className="text-right">{item.likes}</td>
-                                    <td className="text-right">{item.admin_name}</td>
-                                    <td>
-                                        <Link to={`/dashboard/updateItem/${item._id}`}>
-                                            <button
-                                                className="btn btn-ghost btn-lg ">
-                                                <FaEdit className="text-orange-600 
+                                    </div>
+                                </td>
+                                <td>
+                                    {item.title}
+                                </td>
+                                <td className="text-right">${item.price}</td>
+                                <td className="text-right">{item.likes}</td>
+                                <td className="text-right">{item.admin_name}</td>
+                                <td>
+                                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                                        <button
+                                            className="btn btn-ghost btn-lg ">
+                                            <FaEdit className="text-orange-600 
                                         "></FaEdit>
-                                            </button>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <button
-                                            onClick={() => handleDeleteItem(item)}
-                                            className="btn btn-ghost btn-lg">
-                                            <FaTrashAlt className="text-orange-600"></FaTrashAlt>
                                         </button>
-                                    </td>
-                                    <td>
-                                        <button
-                                            onClick={() => handleDeleteItem(item)}
-                                            className="btn bg-orange-500 text-white">
-                                            View Meal
-                                        </button>
-                                    </td>
-                                </tr>)
-                            }
-                        </tbody>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => handleDeleteItem(item)}
+                                        className="btn btn-ghost btn-lg">
+                                        <FaTrashAlt className="text-orange-600"></FaTrashAlt>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => handleDeleteItem(item)}
+                                        className="btn bg-orange-500 text-white">
+                                        View Meal
+                                    </button>
+                                </td>
+                            </tr>)
+                        }
+                    </tbody>
 
 
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
     );

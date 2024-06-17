@@ -10,11 +10,12 @@ import '@smastrom/react-rating/style.css'
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useReview from "../../hooks/useReview";
 
 
 const MealDetails = () => {
     const avatarImg = "https://i.ibb.co/cT2y4cB/pic2.jpg"
-    const [reviewFood, setReviewFood] = useState([]);
+    const [review] = useReview();
     const meal = useLoaderData()
     const { id } = useParams()
     
@@ -52,15 +53,15 @@ const MealDetails = () => {
             console.log(err)
         }
     }
-    useEffect(() => {
-        fetch('http://localhost:8000/reviews')
-            .then(res => res.json())
-            .then(data => {
-                setReviewFood(data);
-            });
-    }, [])
-    console.log({ reviewFood, title });
-    const filteredFood = reviewFood.filter(review =>
+    // useEffect(() => {
+    //     fetch('http://localhost:8000/reviews')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setReviewFood(data);
+    //         });
+    // }, [])
+    // console.log({ reviewFood, title });
+    const filteredFood = review.filter(review =>
         review.food_title === title
     );
 

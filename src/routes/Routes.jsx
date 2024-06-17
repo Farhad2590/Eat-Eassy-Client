@@ -12,6 +12,9 @@ import ManageUser from '../pages/Dashboards/ManageUser/ManageUser'
 import Addmeals from '../pages/Dashboards/Addmeals/Addmeals'
 import Managemeals from '../pages/Dashboards/ManageMeals/Managemeals'
 import AllReviews from '../pages/Dashboards/AllReviews/AllReviews'
+import Profile from '../pages/Dashboards/Profile/Profile'
+import UpcommingMeals from '../pages/Dashboards/UpcommingMeals/UpcommingMeals'
+import Upcomming from '../pages/Upcomming/Upcomming'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -25,6 +28,10 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: '/upcommingMeals',
+        element: <Upcomming />,
+      },
+      {
         path: '/allMeals',
         element: <Meal />,
       },
@@ -33,6 +40,7 @@ export const router = createBrowserRouter([
         loader: () => fetch('http://localhost:8000/meals'),
         element: <MealDetails />,
       },
+      
     ],
   },
   {
@@ -54,6 +62,14 @@ export const router = createBrowserRouter([
       {
         path:'allReviews',
         element:<AllReviews></AllReviews>
+      },
+      {
+        path:'profile',
+        element:<Profile></Profile>
+      },
+      {
+        path:'upcomingMeals',
+        element:<UpcommingMeals></UpcommingMeals>
       }
     ]
   },

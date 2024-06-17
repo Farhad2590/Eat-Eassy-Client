@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 
 
 
@@ -65,6 +66,7 @@ const AllReviews = () => {
 
     return (
         <div>
+            <SharedTitle heading="All Reviews" subHeading="Reviews From Our Daily Users"></SharedTitle>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}

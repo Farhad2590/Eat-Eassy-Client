@@ -13,7 +13,7 @@ const Navbars = () => {
         <div className="space-x-5">
             <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Home</NavLink>
             <NavLink to={'/allMeals'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Meals</NavLink>
-            <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Upcomming</NavLink>
+            <NavLink to={'/upcommingMeals'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Upcomming</NavLink>
         </div>
 
     return (

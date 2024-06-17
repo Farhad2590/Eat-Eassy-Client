@@ -4,7 +4,8 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 
-const Addmeals = () => {
+
+const UpcommingMeals = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
@@ -39,12 +40,12 @@ const Addmeals = () => {
             }
             console.log(mealItem);
 
-            const mealRes = await axiosPublic.post('/meals', mealItem);
+            const mealRes = await axiosPublic.post('/upcomming', mealItem);
             console.log(mealRes.data)
             if (mealRes.data.insertedId) {
                 // show success popup
                 reset();
-                toast.success(`${data.name} is added to the meal.`)
+                toast.success(`${data.name} is added to the Upcomming meal.`)
 
             }
         }
@@ -52,7 +53,7 @@ const Addmeals = () => {
     };
     return (
         <div>
-            <SharedTitle heading="Add Meals" subHeading="Add Meals For Your  Users"></SharedTitle>
+            <SharedTitle heading="Upcomming Meals" subHeading="Upcomming For Your  Users"></SharedTitle>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className="form-control w-full my-2">
                     <label className="label">
@@ -158,4 +159,4 @@ const Addmeals = () => {
     );
 };
 
-export default Addmeals;
+export default UpcommingMeals;
