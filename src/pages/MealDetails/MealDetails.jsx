@@ -21,12 +21,45 @@ const MealDetails = () => {
     const { id } = useParams()
     const axiosSecure = useAxiosPublic()
     const {user} = useAuth()
-    console.log(user);
+    
    
     const mealDetails = meal.find(meals => meals._id === id);
     // console.log(mealDetails);
 
     const { _id, image, title,likes, admin_name, description, category, ingredients, post_time } = mealDetails;
+   
+    const handleMealRequest = async e => {
+
+        const filterReview = review.filter(review =>
+            review.food_title === title
+        );
+        const user_name = user.displayName;
+        const user_photo = user.photoURL;
+        const user_email = user.email;
+
+        const mealData ={
+            title,
+            likes,
+            filterReview,
+            user_name,
+            user_photo,
+            user_email,
+            status: 'pending'
+        } 
+
+        console.log(mealData);
+
+        try {
+            const { data } = await axios.post(
+                'http://localhost:8000/mealRequest', mealData)
+            console.log(data)
+            toast.success('Meal Request Posted Successfully')
+            refetch()
+        } catch (err) {
+            console.log(err)
+        }
+    }
+   
     const handleReviewSubmit = async e => {
         e.preventDefault()
         const form = e.target
@@ -34,12 +67,14 @@ const MealDetails = () => {
         const rating = form.rating.value;
         const user_name = user.displayName;
         const user_photo = user.photoURL;
+        const user_email = user.email;
 
         const reviewData ={
             review,
             rating,
             user_name,
             user_photo,
+            user_email,
             food_title:title
         } 
 
@@ -60,7 +95,6 @@ const MealDetails = () => {
         review.food_title === title
     );
 
-    // console.log(likes +1);
 
     const handleLike = (e) => {
         console.log(e);
@@ -70,7 +104,7 @@ const MealDetails = () => {
         const menuRes =  axiosSecure.patch(`/meals/${e}`, menuItem);
         console.log(menuRes);
     };
-    // console.log(filteredFood);
+
 
     return (
         <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-black-800">
@@ -109,7 +143,7 @@ const MealDetails = () => {
                     </div>
                 </div>
                 <div className="flex mb-5">
-                    <button className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
+                    <button onClick={handleMealRequest} className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
                     <div className="flex px-3 items-center">
                         <FcLike onClick={()=>handleLike(title)} className="text-4xl mr-2"></FcLike>
                         <p className="font-bold text-lg">{likes}</p>
