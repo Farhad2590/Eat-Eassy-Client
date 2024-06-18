@@ -83,7 +83,7 @@ const Managemeals = () => {
                                 <td className="text-right">{item.likes}</td>
                                 <td className="text-right">{item.admin_name}</td>
                                 <td>
-                                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                                    <Link to={`/dashboard/updatemeal/${item._id}`}>
                                         <button
                                             className="btn btn-ghost btn-lg ">
                                             <FaEdit className="text-orange-600 

@@ -15,6 +15,7 @@ import AllReviews from '../pages/Dashboards/AllReviews/AllReviews'
 import Profile from '../pages/Dashboards/Profile/Profile'
 import UpcommingMeals from '../pages/Dashboards/UpcommingMeals/UpcommingMeals'
 import Upcomming from '../pages/Upcomming/Upcomming'
+import UpdateMeal from '../pages/Dashboards/ManageMeals/UpdateMeal'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -70,7 +71,12 @@ export const router = createBrowserRouter([
       {
         path:'upcomingMeals',
         element:<UpcommingMeals></UpcommingMeals>
-      }
+      },
+      {
+        path: 'updatemeal/:id',
+        element: <UpdateMeal></UpdateMeal>,
+        loader: ({params}) => fetch(`http://localhost:8000/meals/${params.id}`)
+      },
     ]
   },
   { path: '/login', element: <Login /> },

@@ -59,7 +59,7 @@ const Navbars = () => {
                                         }
                                     </a>
                                 </li>
-                                <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                                <NavLink to={'/dashboard/profile'}>Dashboard</NavLink>
                                 <li><button onClick={logOut}>Logout</button></li>
                             </ul>
                         </div>

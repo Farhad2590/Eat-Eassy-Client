@@ -11,14 +11,15 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import useReview from "../../hooks/useReview";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const MealDetails = () => {
     const avatarImg = "https://i.ibb.co/cT2y4cB/pic2.jpg"
-    const [review] = useReview();
+    const [review,refetch] = useReview();
     const meal = useLoaderData()
     const { id } = useParams()
-    
+    const axiosSecure = useAxiosPublic()
     const {user} = useAuth()
     console.log(user);
    
@@ -49,22 +50,26 @@ const MealDetails = () => {
                 'http://localhost:8000/reviews', reviewData)
             console.log(data)
             toast.success('Review Posted Successfully')
+            refetch()
         } catch (err) {
             console.log(err)
         }
     }
-    // useEffect(() => {
-    //     fetch('http://localhost:8000/reviews')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setReviewFood(data);
-    //         });
-    // }, [])
-    // console.log({ reviewFood, title });
+   
     const filteredFood = review.filter(review =>
         review.food_title === title
     );
 
+    // console.log(likes +1);
+
+    const handleLike = (e) => {
+        console.log(e);
+       
+        const menuItem ={likes : likes +1}
+        // console.log(menuItem);
+        const menuRes =  axiosSecure.patch(`/meals/${e}`, menuItem);
+        console.log(menuRes);
+    };
     // console.log(filteredFood);
 
     return (
@@ -106,7 +111,7 @@ const MealDetails = () => {
                 <div className="flex mb-5">
                     <button className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
                     <div className="flex px-3 items-center">
-                        <FcLike className="text-4xl mr-2"></FcLike>
+                        <FcLike onClick={()=>handleLike(title)} className="text-4xl mr-2"></FcLike>
                         <p className="font-bold text-lg">{likes}</p>
                     </div>
                 </div>
