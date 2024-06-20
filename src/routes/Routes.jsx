@@ -16,7 +16,10 @@ import Profile from '../pages/Dashboards/Profile/Profile'
 import UpcommingMeals from '../pages/Dashboards/UpcommingMeals/UpcommingMeals'
 import Upcomming from '../pages/Upcomming/Upcomming'
 import UpdateMeal from '../pages/Dashboards/ManageMeals/UpdateMeal'
-import MyReviews from '../pages/MyReviews/MyReviews'
+import MyReviews from '../pages/Dashboards/MyReviews/MyReviews'
+import MealRequest from '../pages/Dashboards/MealRequest/MealRequest'
+import Payment from '../pages/Dashboards/Payment/Payment'
+import PaymentHistory from '../pages/Dashboards/PaymentHistory/PaymentHistory'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -82,6 +85,18 @@ export const router = createBrowserRouter([
         path:'myReviews',
         element:<MyReviews></MyReviews>
       },
+      {
+        path:'requestedMeals',
+        element:<MealRequest></MealRequest>
+      },
+      {
+        path:'payment',
+        element:<Payment></Payment>
+      },
+      {
+        path:'paymentHistory',
+        element:<PaymentHistory></PaymentHistory>
+      }
     ]
   },
   { path: '/login', element: <Login /> },

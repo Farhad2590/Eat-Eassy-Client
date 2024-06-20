@@ -26,7 +26,7 @@ const MealDetails = () => {
     const mealDetails = meal.find(meals => meals._id === id);
     // console.log(mealDetails);
 
-    const { _id, image, title,likes, admin_name, description, category, ingredients, post_time } = mealDetails;
+    const { _id, image,price, title,likes, admin_name, description, category, ingredients, post_time } = mealDetails;
    
     const handleMealRequest = async e => {
 
@@ -44,7 +44,9 @@ const MealDetails = () => {
             user_name,
             user_photo,
             user_email,
-            status: 'pending'
+            price,
+            status: 'pending',
+            meal_id :_id
         } 
 
         console.log(mealData);

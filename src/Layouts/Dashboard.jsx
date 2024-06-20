@@ -92,7 +92,7 @@ const Dashboard = () => {
                                             My Profile</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/dashboard/reservation" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
+                                        <NavLink to="/dashboard/requestedMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
                                             <FaCalendar></FaCalendar>
                                             Requested Meals</NavLink>
                                     </li>

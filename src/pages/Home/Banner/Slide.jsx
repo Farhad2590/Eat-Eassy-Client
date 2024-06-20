@@ -1,7 +1,10 @@
-// import { Link } from 'react-router-dom'
+import { useState } from 'react';
 import { IoSearch } from "react-icons/io5";
+import axios from 'axios';
 
 const Slide = ({ image, text }) => {
+  
+
   return (
     <div
       className='w-full bg-center bg-cover h-[38rem]'
@@ -15,7 +18,7 @@ const Slide = ({ image, text }) => {
             {text}
           </h1>
           <br />
-          <form className="max-w-md mx-auto">
+          <form className="max-w-md mx-auto" onSubmit={handleSearch}>
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
               Search
             </label>
@@ -28,20 +31,33 @@ const Slide = ({ image, text }) => {
                 id="default-search"
                 className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search Meals..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 required
               />
               <button
                 type="submit"
-                className="btn absolute right-2.5 bottom-1 bg-orange-400  text-white hover:border border-orange-400"
+                className="btn absolute right-2.5 bottom-1 bg-orange-400 text-white hover:border border-orange-400"
               >
                 Search
               </button>
             </div>
           </form>
+          <div className="mt-5">
+            {results.length > 0 ? (
+              <ul className="text-white">
+                {results.map((meal) => (
+                  <li key={meal._id}>{meal.title}</li>
+                ))}
+              </ul>
+            ) : (
+              query && <p className="text-white">No results found</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Slide
+export default Slide;

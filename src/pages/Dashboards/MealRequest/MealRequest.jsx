@@ -1,14 +1,25 @@
-import { Link } from "react-router-dom";
-import useMeals from "../../../hooks/useMeals";
+import { useQuery } from "@tanstack/react-query";
+import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import { Link } from "react-router-dom";
 
 
-const Managemeals = () => {
-    const [menu, refetch] = useMeals();
-    const axiosPublic = useAxiosPublic()
+const MealRequest = () => {
+    const axiosSecure = useAxiosPublic()
+    const {
+        data: requested = [],
+    } = useQuery({
+        queryKey: ['requested',],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/requested_meals`);
+            return data;
+        },
+    });
+    console.log(requested);
+    const totalPrice = requested.reduce((total, item) => total + item.price, 0);
+    console.log(totalPrice);
     const handleDeleteItem = (item) => {
         console.log(item);
         Swal.fire({
@@ -21,11 +32,11 @@ const Managemeals = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/meals/${item._id}`);
-                // console.log(res.data);
+                const res = await axiosSecure.delete(`/requested_meals/${item._id}`);
+                console.log(res.data);
                 if (res.data.deletedCount > 0) {
                     // refetch to update the ui
-                    refetch();
+                    // refetch();
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -34,17 +45,29 @@ const Managemeals = () => {
                         timer: 1500
                     });
                 }
-
-
             }
         });
     }
-
-   
     return (
         <div>
-            <SharedTitle heading="All Meals" subHeading="Our Regular Meals"></SharedTitle>
-            
+            {/* <p>sss{totalPrice}</p> */}
+            <SharedTitle heading="My Requested Meals" subHeading="Requester Meals For Me"></SharedTitle>
+
+            <div className="flex justify-between mb-5">
+                <div>
+                    <h1 className="text-2xl font-bold bg-orange-500 rounded-lg text-white p-5">Requested Items :{requested.length}</h1>
+                </div>
+                <div>
+                    <h1 className="text-2xl font-bold bg-orange-500 rounded-lg text-white p-5">Total Price :{totalPrice}</h1>
+                </div>
+                {
+                    requested.length ?
+                        <Link to="/dashboard/payment">
+                            <button className=" bg-orange-500 text-white text-2xl p-5">Pay Now</button>
+                        </Link> :
+                        <button disabled className=" bg-orange-500 text-white text-2xl p-5">Pay Now</button>
+                }
+            </div> 
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
@@ -53,45 +76,33 @@ const Managemeals = () => {
                             <th>
                                 #
                             </th>
-                            <th>Image</th>
                             <th>Item Name</th>
-                            <th>Price</th>
                             <th>Likes</th>
-                            <th>Distributer Name</th>
-                            <th>Update</th>
+                            <th>Status</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                             <th>View Meal</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            menu.map((item, index) => <tr key={item._id}>
+                            requested.map((item, index) => <tr key={item._id}>
                                 <td>
                                     {index + 1}
                                 </td>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+
                                 <td>
                                     {item.title}
                                 </td>
-                                <td className="text-right">${item.price}</td>
+
                                 <td className="text-right">{item.likes}</td>
-                                <td className="text-right">{item.admin_name}</td>
+                                <td className="text-right">{item.status}</td>
                                 <td>
-                                    <Link to={`/dashboard/updatemeal/${item._id}`}>
-                                        <button
-                                            className="btn btn-ghost btn-lg ">
-                                            <FaEdit className="text-orange-600 
-                                        "></FaEdit>
-                                        </button>
-                                    </Link>
+                                    <button
+                                        // onClick={() => handleDeleteItem(item)}
+                                        className="btn btn-ghost btn-lg">
+                                        <FaEdit className="text-orange-600"></FaEdit>
+                                    </button>
                                 </td>
                                 <td>
                                     <button
@@ -102,7 +113,6 @@ const Managemeals = () => {
                                 </td>
                                 <td>
                                     <button
-                                        onClick={() => handleDeleteItem(item)}
                                         className="btn bg-orange-500 text-white">
                                         View Meal
                                     </button>
@@ -118,4 +128,4 @@ const Managemeals = () => {
     );
 };
 
-export default Managemeals;
+export default MealRequest;

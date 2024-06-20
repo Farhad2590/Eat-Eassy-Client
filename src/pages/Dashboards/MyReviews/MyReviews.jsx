@@ -1,9 +1,9 @@
-import SharedTitle from "../../Components/Shared/Sharedtitle/SharedTitle";
-import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useQuery } from '@tanstack/react-query'
-import useMeals from "../../hooks/useMeals"
+import useMeals from "../../../hooks/useMeals"
 
 const MyReviews = () => {
     const[menu] = useMeals()
