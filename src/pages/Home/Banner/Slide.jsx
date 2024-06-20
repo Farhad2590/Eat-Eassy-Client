@@ -3,7 +3,18 @@ import { IoSearch } from "react-icons/io5";
 import axios from 'axios';
 
 const Slide = ({ image, text }) => {
-  
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:8000/search?query=${query}`);
+      setResults(response.data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
 
   return (
     <div
