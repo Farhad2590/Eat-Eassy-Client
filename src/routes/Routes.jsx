@@ -20,6 +20,7 @@ import MyReviews from '../pages/Dashboards/MyReviews/MyReviews'
 import MealRequest from '../pages/Dashboards/MealRequest/MealRequest'
 import Payment from '../pages/Dashboards/Payment/Payment'
 import PaymentHistory from '../pages/Dashboards/PaymentHistory/PaymentHistory'
+// import MealDetail from '../pages/MealDetails/MealDetail'
 // import RoomDetails from '../pages/RoomDetails/RoomDetails'
 
 export const router = createBrowserRouter([
@@ -45,6 +46,11 @@ export const router = createBrowserRouter([
         loader: () => fetch('http://localhost:8000/meals'),
         element: <MealDetails />,
       },
+      // {
+      //   path: '/upcomming/:id',
+      //   loader: () => fetch('http://localhost:8000/upcomming'),
+      //   element: <MealDetail />,
+      // },
       
     ],
   },

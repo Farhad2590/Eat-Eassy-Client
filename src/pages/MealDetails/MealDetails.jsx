@@ -16,7 +16,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const MealDetails = () => {
     const avatarImg = "https://i.ibb.co/cT2y4cB/pic2.jpg"
-    const [review,refetch] = useReview();
+    const [review,,refetch] = useReview();
     const meal = useLoaderData()
     const { id } = useParams()
     const axiosSecure = useAxiosPublic()

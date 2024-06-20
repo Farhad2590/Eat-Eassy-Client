@@ -6,11 +6,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import useMeals from "../../../hooks/useMeals";
+import { Link } from "react-router-dom";
 
 
 
 const AllReviews = () => {
-    const [review, refetch] = useReview();
+    const [review, , refetch] = useReview();
+    const [menu] = useMeals()
     // const [menu] = useMeals();
     const axiosPublic = useAxiosPublic()
     const [reviewCounts, setReviewCounts] = useState({});
@@ -46,24 +49,23 @@ const AllReviews = () => {
                 const res = await axiosPublic.delete(`/reviews/${item._id}`);
                 console.log(res.data);
                 if (res.data.deletedCount > 0) {
+                    toast.success(`${item.title} has been deleted`)
                     // refetch to update the ui
                     refetch();
-                    // toast.success(`${item.title} has been deleted`)
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${item.title} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
                 }
 
 
             }
         });
     }
-   
 
+    const handleViewMeal = (e) => {
+        console.log(e);
+        const mealDetails = menu.find(meals => meals.title === e.food_title);
+        console.log(mealDetails);
+    }
+
+    console.log(menu);
     return (
         <div>
             <SharedTitle heading="All Reviews" subHeading="Reviews From Our Daily Users"></SharedTitle>
@@ -83,34 +85,36 @@ const AllReviews = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            review.map((item, index) => <tr key={item._id}>
-                                <td>
-                                    {index + 1}
-                                </td>
+                        {review.map((item, index) => {
+                            const meal = menu.find(meal => meal.title === item.food_title);
+                            const likes = meal ? meal.likes : 0; // Default to 0 likes if meal is not found
+                            const ids = meal ? meal._id : 0;
+                            console.log(ids);
+                            return (
+                                <tr key={item._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{item.food_title}</td>
+                                    <td className="text-right">{likes}</td>
+                                    <td className="text-right">{reviewCounts[item.food_title]}</td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleDeleteItem(item)}
+                                            className="btn btn-ghost btn-lg">
+                                            <FaTrashAlt className="text-orange-600" />
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <Link to={`/meal/${ids}`}>
+                                            <button
 
-                                <td>
-                                    {item.food_title}
-                                </td>
-
-                                <td className="text-right">{item.likes}</td>
-                                <td className="text-right">{reviewCounts[item.food_title]}</td>
-
-                                <td>
-                                    <button
-                                        onClick={() => handleDeleteItem(item)}
-                                        className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-orange-600"></FaTrashAlt>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button
-                                        className="btn bg-orange-500 text-white">
-                                        View Meal
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
+                                                className="btn bg-orange-500 text-white">
+                                                View Meal
+                                            </button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
 
 

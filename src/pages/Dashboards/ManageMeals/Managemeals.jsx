@@ -4,10 +4,11 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import toast from "react-hot-toast";
 
 
 const Managemeals = () => {
-    const [menu, refetch] = useMeals();
+    const [menu, ,refetch] = useMeals();
     const axiosPublic = useAxiosPublic()
     const handleDeleteItem = (item) => {
         console.log(item);
@@ -24,15 +25,15 @@ const Managemeals = () => {
                 const res = await axiosPublic.delete(`/meals/${item._id}`);
                 // console.log(res.data);
                 if (res.data.deletedCount > 0) {
-                    // refetch to update the ui
+                    toast.success(`${item.title} has been deleted`)
+                    // Swal.fire({
+                    //     position: "top-end",
+                    //     icon: "success",
+                    //     title: `${item.title} has been deleted`,
+                    //     showConfirmButton: false,
+                    //     timer: 1500
+                    // });
                     refetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${item.title} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
                 }
 
 
