@@ -18,9 +18,7 @@ const MealRequest = () => {
             return data;
         },
     });
-    console.log(requested);
-    const totalPrice = requested.reduce((total, item) => total + item.price, 0);
-    console.log(totalPrice);
+    
     const handleDeleteItem = (item) => {
         console.log(item);
         Swal.fire({
@@ -45,24 +43,10 @@ const MealRequest = () => {
     }
     return (
         <div>
-            {/* <p>sss{totalPrice}</p> */}
+           
             <SharedTitle heading="My Requested Meals" subHeading="Requester Meals For Me"></SharedTitle>
 
-            {/* <div className="flex justify-between mb-5">
-                <div>
-                    <h1 className="text-2xl font-bold bg-orange-500 rounded-lg text-white p-5">Requested Items :{requested.length}</h1>
-                </div>
-                <div>
-                    <h1 className="text-2xl font-bold bg-orange-500 rounded-lg text-white p-5">Total Price :{totalPrice}</h1>
-                </div>
-                {
-                    requested.length ?
-                        <Link to="/dashboard/payment">
-                            <button className=" bg-orange-500 text-white text-2xl p-5">Pay Now</button>
-                        </Link> :
-                        <button disabled className=" bg-orange-500 text-white text-2xl p-5">Pay Now</button>
-                }
-            </div>  */}
+            
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
@@ -74,9 +58,8 @@ const MealRequest = () => {
                             <th>Item Name</th>
                             <th>Likes</th>
                             <th>Status</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                            <th>View Meal</th>
+                            
+                            <th>Cancel</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,13 +75,7 @@ const MealRequest = () => {
 
                                 <td className="text-right">{item.likes}</td>
                                 <td className="text-right">{item.status}</td>
-                                <td>
-                                    <button
-                                        // onClick={() => handleDeleteItem(item)}
-                                        className="btn btn-ghost btn-lg">
-                                        <FaEdit className="text-orange-600"></FaEdit>
-                                    </button>
-                                </td>
+                                
                                 <td>
                                     <button
                                         onClick={() => handleDeleteItem(item)}
@@ -106,12 +83,7 @@ const MealRequest = () => {
                                         <FaTrashAlt className="text-orange-600"></FaTrashAlt>
                                     </button>
                                 </td>
-                                <td>
-                                    <button
-                                        className="btn bg-orange-500 text-white">
-                                        View Meal
-                                    </button>
-                                </td>
+                                
                             </tr>)
                         }
                     </tbody>

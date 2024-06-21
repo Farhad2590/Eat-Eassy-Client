@@ -4,7 +4,6 @@ import Home from '../pages/Home/Home'
 import ErrorPage from '../pages/Error/ErrorPage'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/Signup/SignUp'
-// import Meals from '../pages/Meals/Meals'
 import MealDetails from '../pages/MealDetails/MealDetails'
 import Meal from '../pages/Meals/Meal'
 import Dashboard from '../Layouts/Dashboard';
@@ -21,8 +20,9 @@ import MealRequest from '../pages/Dashboards/MealRequest/MealRequest'
 import Payment from '../pages/Dashboards/Payment/Payment'
 import PaymentHistory from '../pages/Dashboards/PaymentHistory/PaymentHistory'
 import AllUpcomming from '../pages/Dashboards/AllUpcomming/AllUpcomming'
-// import MealDetail from '../pages/MealDetails/MealDetail'
-// import RoomDetails from '../pages/RoomDetails/RoomDetails'
+import PrivateRoute from './PrivateRoute'
+import ServedMeals from '../pages/Dashboards/ServedMeals/ServedMeals'
+
 
 export const router = createBrowserRouter([
   {
@@ -44,14 +44,17 @@ export const router = createBrowserRouter([
       },
       {
         path: '/meal/:id',
-        element: <MealDetails />,
+        element: <PrivateRoute>
+          <MealDetails />
+        </PrivateRoute>,
       }
-      
+
     ],
   },
   {
     path: 'dashboard',
     element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'allUsers',
@@ -62,44 +65,48 @@ export const router = createBrowserRouter([
         element: <Addmeals></Addmeals>
       },
       {
-        path:'allMeals',
-        element:<Managemeals></Managemeals>
+        path: 'allMeals',
+        element: <Managemeals></Managemeals>
       },
       {
-        path:'allReviews',
-        element:<AllReviews></AllReviews>
+        path: 'allReviews',
+        element: <AllReviews></AllReviews>
       },
       {
-        path:'profile',
-        element:<Profile></Profile>
+        path: 'profile',
+        element: <Profile></Profile>
       },
       {
-        path:'upcomingMeals',
-        element:<UpcommingMeals></UpcommingMeals>
+        path: 'upcomingMeals',
+        element: <UpcommingMeals></UpcommingMeals>
       },
       {
-        path:'allupcomingMeals',
-        element:<AllUpcomming></AllUpcomming>
+        path: 'allupcomingMeals',
+        element: <AllUpcomming></AllUpcomming>
       },
       {
         path: 'updatemeal/:id',
         element: <UpdateMeal></UpdateMeal>,
       },
       {
-        path:'myReviews',
-        element:<MyReviews></MyReviews>
+        path: 'myReviews',
+        element: <MyReviews></MyReviews>
       },
       {
-        path:'requestedMeals',
-        element:<MealRequest></MealRequest>
+        path: 'requestedMeals',
+        element: <MealRequest></MealRequest>
       },
       {
-        path:'payment',
-        element:<Payment></Payment>
+        path: 'payment',
+        element: <Payment></Payment>
       },
       {
-        path:'paymentHistory',
-        element:<PaymentHistory></PaymentHistory>
+        path: 'serveMeals',
+        element: <ServedMeals></ServedMeals>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
       }
     ]
   },

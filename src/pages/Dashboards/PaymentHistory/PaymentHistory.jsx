@@ -15,6 +15,7 @@ const PaymentHistory = () => {
             return res.data;
         }
     })
+    console.log(payments);
     return (
         <div>
             <SharedTitle heading="Payment History" subHeading="You Payment History"></SharedTitle>
@@ -26,14 +27,16 @@ const PaymentHistory = () => {
                             <th>#</th>
                             <th>price</th>
                             <th>Transaction Id</th>
+                            <th>Membership Card</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {payments.map((payment, index) => <tr key={payment._id}>
+                        {payments?.map((payment, index) => <tr key={payment._id}>
                             <th>{index + 1}</th>
                             <td>${payment.price}</td>
                             <td>{payment.transactionId}</td>
+                            <td>{payment.membership}</td>
                             <td>{payment.status}</td>
                         </tr>)}
                         

@@ -1,54 +1,50 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { FaUsers } from "react-icons/fa";
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
-
-
 
 const ManageUser = () => {
     const axiosPublic = useAxiosPublic();
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosPublic.get('/users');
             return res.data;
         }
-    })
+    });
 
     const handleMakeAdmin = user => {
         axiosPublic.patch(`/users/admin/${user._id}`)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                     refetch();
-                    toast.success(`${user.name} is an Admin Now!`)
+                    toast.success(`${user.name} is an Admin Now!`);
                 }
-            })
-    }
+            });
+    };
+
+    // Calculate total pages
+    const totalPages = Math.ceil(users.length / itemsPerPage);
+
+    // Get current users for the current page
+    const currentUsers = users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    // Handle page change
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <div>
             <SharedTitle heading="All Users"></SharedTitle>
-            {/* <form onSubmit={handleSearch}>
-                <div className='flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-orange-400 focus-within:ring-orange-300'>
-                    <input
-                        className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
-                        type='text'
-                        onChange={e => setSearchText(e.target.value)}
-                        value={searchText}
-                        name='search'
-                        placeholder='Enter Food Title'
-                        aria-label='Enter Food Title'
-                    />
-
-                    <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-700 uppercase transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-orange-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'>
-                        Search
-                    </button>
-                </div>
-            </form> */}
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th></th>
@@ -59,31 +55,53 @@ const ManageUser = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            users.map((user, index) => <tr key={user._id}>
-                                <th>{index + 1}</th>
+                        {currentUsers.map((user, index) => (
+                            <tr key={user._id}>
+                                <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    {user.role === 'admin' ? 'Admin' : <button
-                                        onClick={() => handleMakeAdmin(user)}
-                                        className="btn btn-lg bg-orange-500">
-                                        <FaUsers className="text-white 
-                                        text-2xl"></FaUsers>
-                                    </button>}
+                                    {user.role === 'admin' ? 'Admin' : (
+                                        <button
+                                            onClick={() => handleMakeAdmin(user)}
+                                            className="btn btn-lg bg-orange-500"
+                                        >
+                                            <FaUsers className="text-white text-2xl"></FaUsers>
+                                        </button>
+                                    )}
                                 </td>
                                 <td>
-                                    <button
-
-                                        className="btn btn-ghost btn-lg">
-
-                                    </button>
+                                    <button className="btn btn-ghost btn-lg"></button>
                                 </td>
-                            </tr>)
-                        }
-
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="pagination flex justify-center mt-4">
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="btn mx-1"
+                >
+                    Previous
+                </button>
+                {[...Array(totalPages)].map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`btn mx-1 ${currentPage === index + 1 ? 'btn-active' : ''}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="btn mx-1"
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

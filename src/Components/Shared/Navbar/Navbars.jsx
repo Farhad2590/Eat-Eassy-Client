@@ -51,17 +51,17 @@ const Navbars = () => {
                                     <img alt="Tailwind CSS Navbar component" src={user && user.photoURL} />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                <NavLink className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>
+                            <div tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li className="mt-3 btn bg-orange-500 text-white">
                                     <a className="justify-between">
                                         {
                                             user && user.displayName
                                         }
                                     </a>
-                                </NavLink>
-                                <NavLink to={'/dashboard/profile'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Dashboard</NavLink>
-                                <NavLink ><button className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'} onClick={logOut}>Logout</button></NavLink>
-                            </ul>
+                                </li>
+                                <NavLink to={'/dashboard/profile'} className="mt-3 btn bg-orange-500 text-white">Dashboard</NavLink>
+                                <li className="mt-3 btn bg-orange-500 text-white" ><button  onClick={logOut}>Logout</button></li>
+                            </div>
                         </div>
 
                         :
