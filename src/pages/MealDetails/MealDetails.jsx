@@ -16,18 +16,18 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const MealDetails = () => {
     const avatarImg = "https://i.ibb.co/cT2y4cB/pic2.jpg"
-    const [review,,refetch] = useReview();
+    const [review, , refetch] = useReview();
     const meal = useLoaderData()
     const { id } = useParams()
     const axiosSecure = useAxiosPublic()
-    const {user} = useAuth()
-    
-   
+    const { user } = useAuth()
+
+
     const mealDetails = meal.find(meals => meals._id === id);
     // console.log(mealDetails);
 
-    const { _id, image,price, title,likes, admin_name, description, category, ingredients, post_time } = mealDetails;
-   
+    const { _id, image, price, title, likes, admin_name, description, category, ingredients, post_time } = mealDetails;
+
     const handleMealRequest = async e => {
 
         const filterReview = review.filter(review =>
@@ -37,7 +37,7 @@ const MealDetails = () => {
         const user_photo = user.photoURL;
         const user_email = user.email;
 
-        const mealData ={
+        const mealData = {
             title,
             likes,
             filterReview,
@@ -46,8 +46,8 @@ const MealDetails = () => {
             user_email,
             price,
             status: 'pending',
-            meal_id :_id
-        } 
+            meal_id: _id
+        }
 
         console.log(mealData);
 
@@ -61,7 +61,7 @@ const MealDetails = () => {
             console.log(err)
         }
     }
-   
+
     const handleReviewSubmit = async e => {
         e.preventDefault()
         const form = e.target
@@ -71,14 +71,14 @@ const MealDetails = () => {
         const user_photo = user.photoURL;
         const user_email = user.email;
 
-        const reviewData ={
+        const reviewData = {
             review,
             rating,
             user_name,
             user_photo,
             user_email,
-            food_title:title
-        } 
+            food_title: title
+        }
 
         // console.log(reviewData);
 
@@ -92,7 +92,7 @@ const MealDetails = () => {
             console.log(err)
         }
     }
-   
+
     const filteredFood = review.filter(review =>
         review.food_title === title
     );
@@ -100,11 +100,13 @@ const MealDetails = () => {
 
     const handleLike = (e) => {
         console.log(e);
-       
-        const menuItem ={likes : likes +1}
+
+        const menuItem = { likes: likes + 1 }
         // console.log(menuItem);
-        const menuRes =  axiosSecure.patch(`/meals/${e}`, menuItem);
+        const menuRes = axiosSecure.patch(`/meals/${e}`, menuItem);
         console.log(menuRes);
+        toast.success('Like updated successfully');
+        refetch();
     };
 
 
@@ -147,7 +149,7 @@ const MealDetails = () => {
                 <div className="flex mb-5">
                     <button onClick={handleMealRequest} className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
                     <div className="flex px-3 items-center">
-                        <FcLike onClick={()=>handleLike(title)} className="text-4xl mr-2"></FcLike>
+                        <FcLike onClick={() => handleLike(title)} className="text-4xl mr-2"></FcLike>
                         <p className="font-bold text-lg">{likes}</p>
                     </div>
                 </div>

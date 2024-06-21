@@ -85,7 +85,6 @@ export const router = createBrowserRouter([
       {
         path: 'updatemeal/:id',
         element: <UpdateMeal></UpdateMeal>,
-        loader: ({params}) => fetch(`http://localhost:8000/meals/${params.id}`)
       },
       {
         path:'myReviews',

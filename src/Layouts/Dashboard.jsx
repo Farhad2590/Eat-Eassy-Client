@@ -81,7 +81,12 @@ const Dashboard = () => {
                                     <li>
                                         <NavLink to="/dashboard/upcomingMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
                                             <MdUpcoming></MdUpcoming>
-                                            Upcoming Meals</NavLink>
+                                            Add Upcoming Meals</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/dashboard/allupcomingMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
+                                            <IoMdAddCircle></IoMdAddCircle>
+                                            All Upcoming Meals</NavLink>
                                     </li>
                                 </>
                                 :
