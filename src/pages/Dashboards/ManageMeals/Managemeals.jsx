@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 
 const Managemeals = () => {
-    const [menu, ,refetch] = useMeals();
+    const [menu, , refetch] = useMeals();
     const axiosPublic = useAxiosPublic()
     const handleDeleteItem = (item) => {
         console.log(item);
@@ -26,13 +26,6 @@ const Managemeals = () => {
                 // console.log(res.data);
                 if (res.data.deletedCount > 0) {
                     toast.success(`${item.title} has been deleted`)
-                    // Swal.fire({
-                    //     position: "top-end",
-                    //     icon: "success",
-                    //     title: `${item.title} has been deleted`,
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    // });
                     refetch();
                 }
 
@@ -41,11 +34,11 @@ const Managemeals = () => {
         });
     }
 
-   
+
     return (
         <div>
             <SharedTitle heading="All Meals" subHeading="Our Regular Meals"></SharedTitle>
-            
+
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
@@ -102,11 +95,13 @@ const Managemeals = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button
-                                        onClick={() => handleDeleteItem(item)}
-                                        className="btn bg-orange-500 text-white">
-                                        View Meal
-                                    </button>
+                                    <Link to={`/meal/${item._id}`}>
+                                        <button
+
+                                            className="btn bg-orange-500 text-white">
+                                            View Meal
+                                        </button>
+                                    </Link>
                                 </td>
                             </tr>)
                         }

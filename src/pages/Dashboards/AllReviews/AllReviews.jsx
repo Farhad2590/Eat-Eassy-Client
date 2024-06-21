@@ -59,11 +59,11 @@ const AllReviews = () => {
         });
     }
 
-    const handleViewMeal = (e) => {
-        console.log(e);
-        const mealDetails = menu.find(meals => meals.title === e.food_title);
-        console.log(mealDetails);
-    }
+    // const handleViewMeal = (e) => {
+    //     console.log(e);
+    //     const mealDetails = menu.find(meals => meals.title === e.food_title);
+    //     console.log(mealDetails);
+    // }
 
     console.log(menu);
     return (
