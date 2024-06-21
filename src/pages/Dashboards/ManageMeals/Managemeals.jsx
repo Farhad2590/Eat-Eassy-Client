@@ -5,13 +5,15 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 import toast from "react-hot-toast";
-
+import { useState } from "react";
 
 const Managemeals = () => {
     const [menu, , refetch] = useMeals();
-    const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic();
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
     const handleDeleteItem = (item) => {
-        console.log(item);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -23,17 +25,21 @@ const Managemeals = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosPublic.delete(`/meals/${item._id}`);
-                // console.log(res.data);
                 if (res.data.deletedCount > 0) {
-                    toast.success(`${item.title} has been deleted`)
+                    toast.success(`${item.title} has been deleted`);
                     refetch();
                 }
-
-
             }
         });
-    }
+    };
 
+    // Pagination logic
+    const totalPages = Math.ceil(menu.length / itemsPerPage);
+    const currentMeals = menu.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
         <div>
@@ -41,12 +47,9 @@ const Managemeals = () => {
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
-                    {/* head */}
                     <thead>
                         <tr>
-                            <th>
-                                #
-                            </th>
+                            <th>#</th>
                             <th>Image</th>
                             <th>Item Name</th>
                             <th>Price</th>
@@ -58,11 +61,9 @@ const Managemeals = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            menu.map((item, index) => <tr key={item._id}>
-                                <td>
-                                    {index + 1}
-                                </td>
+                        {currentMeals.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
@@ -72,18 +73,14 @@ const Managemeals = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    {item.title}
-                                </td>
+                                <td>{item.title}</td>
                                 <td className="text-right">${item.price}</td>
                                 <td className="text-right">{item.likes}</td>
                                 <td className="text-right">{item.admin_name}</td>
                                 <td>
                                     <Link to={`/dashboard/updatemeal/${item._id}`}>
-                                        <button
-                                            className="btn btn-ghost btn-lg ">
-                                            <FaEdit className="text-orange-600 
-                                        "></FaEdit>
+                                        <button className="btn btn-ghost btn-lg">
+                                            <FaEdit className="text-orange-600"></FaEdit>
                                         </button>
                                     </Link>
                                 </td>
@@ -96,19 +93,40 @@ const Managemeals = () => {
                                 </td>
                                 <td>
                                     <Link to={`/meal/${item._id}`}>
-                                        <button
-
-                                            className="btn bg-orange-500 text-white">
+                                        <button className="btn bg-orange-500 text-white">
                                             View Meal
                                         </button>
                                     </Link>
                                 </td>
-                            </tr>)
-                        }
+                            </tr>
+                        ))}
                     </tbody>
-
-
                 </table>
+            </div>
+            <div className="pagination flex justify-center mt-4">
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="btn mx-1"
+                >
+                    Previous
+                </button>
+                {[...Array(totalPages)].map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`btn mx-1 ${currentPage === index + 1 ? 'btn-active' : ''}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="btn mx-1"
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

@@ -112,11 +112,6 @@ const Dashboard = () => {
                                             <MdOutlinePayment></MdOutlinePayment>
                                             Payment History</NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/dashboard/bookings" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <FaList></FaList>
-                                            My Bookings</NavLink>
-                                    </li>
                                 </>
                         }
                         <div className="divider"></div>

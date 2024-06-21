@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 // import { FaLocationArrow } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FcLike } from "react-icons/fc";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 
 import { Rating } from "@smastrom/react-rating";
@@ -12,21 +12,34 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import useReview from "../../hooks/useReview";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useMeals from "../../hooks/useMeals";
+import { useQuery } from "@tanstack/react-query";
 
 
 const MealDetails = () => {
     const avatarImg = "https://i.ibb.co/cT2y4cB/pic2.jpg"
     const [review, , refetch] = useReview();
-    const meal = useLoaderData()
+    const [menu] = useMeals();
+    // const meal = useLoaderData()
     const { id } = useParams()
     const axiosSecure = useAxiosPublic()
     const { user } = useAuth()
 
+    const { data: payments = [] } = useQuery({
+        queryKey: ['payments'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/payments/${user.email}`)
+            return res.data;
+        }
+    })
 
-    const mealDetails = meal.find(meals => meals._id === id);
+    const isMembershipEmpty = payments.some(payment => payment.email === user.email);
+    // console.log(isMembershipEmpty);
+
+    const mealDetails = menu.find(meals => meals._id === id);
     // console.log(mealDetails);
 
-    const { _id, image, price, title, likes, admin_name, description, category, ingredients, post_time } = mealDetails;
+    const { image, price, title, likes, admin_name, description, category, ingredients, post_time } = mealDetails || {};
 
     const handleMealRequest = async e => {
 
@@ -46,7 +59,7 @@ const MealDetails = () => {
             user_email,
             price,
             status: 'pending',
-            meal_id: _id
+
         }
 
         console.log(mealData);
@@ -77,7 +90,8 @@ const MealDetails = () => {
             user_name,
             user_photo,
             user_email,
-            food_title: title
+            food_title: title,
+            meal_id: id
         }
 
         // console.log(reviewData);
@@ -125,7 +139,7 @@ const MealDetails = () => {
                     <div className="w-[50%]">
                         <h6 className="text-lg font-bold underline">Ingredients used</h6>
                         <ul>
-                            {ingredients.map((ingredient, index) => (
+                            {ingredients?.map((ingredient, index) => (
                                 <li key={index}>*{ingredient}</li>
                             ))}
                         </ul>
@@ -147,7 +161,28 @@ const MealDetails = () => {
                     </div>
                 </div>
                 <div className="flex mb-5">
-                    <button onClick={handleMealRequest} className="btn w-10/12 bg-orange-500 text-white font-bold">Meal Request</button>
+                    {
+                        isMembershipEmpty ?
+                            <button
+
+                                onClick={handleMealRequest}
+                                className="btn w-10/12 bg-orange-500 text-white font-bold"
+
+                            >
+                                Meal Request
+                            </button>
+                            :
+                            <button
+                                disabled
+                                className="btn w-10/12 bg-orange-500 text-white font-bold"
+                            >
+                                Meal Request
+                            </button>
+
+
+
+                    }
+
                     <div className="flex px-3 items-center">
                         <FcLike onClick={() => handleLike(title)} className="text-4xl mr-2"></FcLike>
                         <p className="font-bold text-lg">{likes}</p>

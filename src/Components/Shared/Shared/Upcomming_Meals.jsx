@@ -1,10 +1,33 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
+import { FcLike } from 'react-icons/fc';
 import { LuCircleDollarSign } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
-const Upcomming_Meals = ({meal}) => {
-    const { _id, image, title, price, description, rating } = meal;
+const Upcomming_Meals = ({ meal, refetch }) => {
+    const { _id, image, title, price, description, rating, category, likes } = meal;
+
+    const axiosSecure = useAxiosPublic()
+
+    const handleLike = (id) => {
+        const menuItem = { likes: likes + 1 };
+        // console.log(id, menuItem);
+
+        axiosSecure.patch(`/upcommingMeals/${id}`, menuItem)
+            .then(response => {
+                console.log('Like updated successfully', response.data);
+                toast.success('Like updated successfully');
+                refetch();
+            })
+            .catch(error => {
+                console.error('Error updating like', error);
+                toast.error('Failed to update like');
+            }
+            );
+    };
+
     return (
         <div className="border rounded-lg shadow-md flex flex-col mb-10">
             <div className="h-60 overflow-hidden rounded-t-lg">
@@ -34,8 +57,18 @@ const Upcomming_Meals = ({meal}) => {
                         <FaStar className="text-yellow-500" />
                     </div>
                 </div>
+                <div className="mb-2 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <span className="text-black font-bold">Category: {category}</span>
+
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="text-black font-bold">Likes:{likes}</span>
+                        <FcLike onClick={() => handleLike(_id)} className="text-2xl" />
+                    </div>
+                </div>
             </div>
-            <div className="p-4">
+            {/* <div className="p-4">
                 <Link to={`/upcomming/${_id}`}>
                     <button
                         className="w-full h-12 py-2 text-white bg-orange-500 rounded-lg shadow-none hover:scale-105 focus:scale-105 active:scale-100 transition-transform duration-300 font-bold"
@@ -43,7 +76,7 @@ const Upcomming_Meals = ({meal}) => {
                         View Details
                     </button>
                 </Link>
-            </div>
+            </div> */}
         </div>
     );
 };

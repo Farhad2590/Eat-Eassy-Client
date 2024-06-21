@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const CheckoutForm = () => {
@@ -16,6 +16,10 @@ const CheckoutForm = () => {
     const [error, setError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('');
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const plan = queryParams.get('plan');
+    const price = queryParams.get('price');
 
 
 
@@ -29,18 +33,18 @@ const CheckoutForm = () => {
         },
     });
 
-    const totalPrice = requested.reduce((total, item) => total + item.price, 0)
+    // const totalPrice = requested.reduce((total, item) => total + item.price, 0)
 
     useEffect(() => {
-        if (totalPrice > 0) {
-            axiosSecure.post('/create-payment-intent', { price: totalPrice })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price: price })
                 .then(res => {
                     console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 })
         }
 
-    }, [axiosSecure, totalPrice])
+    }, [axiosSecure, price])
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -71,8 +75,8 @@ const CheckoutForm = () => {
             setError('')
         }
 
-         // confirm payment
-         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+        // confirm payment
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
@@ -92,13 +96,13 @@ const CheckoutForm = () => {
 
                 const payment = {
                     email: user.email,
-                    price: totalPrice,
+                    price: price,
                     transactionId: paymentIntent.id,
                     date: new Date(), // utc date convert. use moment js to 
-                    cartIds: requested.map(item => item._id),
-                    menuItemIds: requested.map(item => item.meal_id),
+                    membership: plan,
                     status: 'suceeded'
                 }
+                console.log(payment);
                 const res = await axiosSecure.post('/payments', payment);
                 console.log('payment saved', res.data);
                 // refetch();
@@ -110,8 +114,15 @@ const CheckoutForm = () => {
         }
 
     };
+
     return (
         <div>
+            <div>
+                <h1>Payment Page</h1>
+                <p>Selected Plan: {plan}</p>
+                <p>Price: ${price}</p>
+
+            </div>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{

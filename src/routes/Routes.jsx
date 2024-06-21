@@ -44,14 +44,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/meal/:id',
-        loader: () => fetch('http://localhost:8000/meals'),
         element: <MealDetails />,
-      },
-      // {
-      //   path: '/upcomming/:id',
-      //   loader: () => fetch('http://localhost:8000/upcomming'),
-      //   element: <MealDetail />,
-      // },
+      }
       
     ],
   },

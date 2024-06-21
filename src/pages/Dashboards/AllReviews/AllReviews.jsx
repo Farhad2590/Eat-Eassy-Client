@@ -1,4 +1,3 @@
-
 import useReview from "../../../hooks/useReview";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -49,7 +48,7 @@ const AllReviews = () => {
                 const res = await axiosPublic.delete(`/reviews/${item._id}`);
                 console.log(res.data);
                 if (res.data.deletedCount > 0) {
-                    toast.success(`${item.title} has been deleted`)
+                    toast.success(`${item.food_title} has been deleted`)
                     // refetch to update the ui
                     refetch();
                 }
@@ -85,42 +84,46 @@ const AllReviews = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {review.map((item, index) => {
-                            const meal = menu.find(meal => meal.title === item.food_title);
-                            const likes = meal ? meal.likes : 0; // Default to 0 likes if meal is not found
-                            const ids = meal ? meal._id : 0;
-                            console.log(ids);
-                            return (
-                                <tr key={item._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.food_title}</td>
-                                    <td className="text-right">{likes}</td>
-                                    <td className="text-right">{reviewCounts[item.food_title]}</td>
-                                    <td>
-                                        <button
-                                            onClick={() => handleDeleteItem(item)}
-                                            className="btn btn-ghost btn-lg">
-                                            <FaTrashAlt className="text-orange-600" />
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <Link to={`/meal/${ids}`}>
+                        {review
+                            .filter(item => {
+                                const meal = menu.find(meal => meal.title === item.food_title);
+                                return meal && meal.likes > 0; // Only include items with more than 0 likes
+                            })
+                            .map((item, index) => {
+                                const meal = menu.find(meal => meal.title === item.food_title);
+                                const likes = meal ? meal.likes : 0; // Default to 0 likes if meal is not found
+                                const ids = meal ? meal._id : 0;
+                                console.log(likes);
+                                return (
+                                    <tr key={item._id}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.food_title}</td>
+                                        <td className="text-right">{likes}</td>
+                                        <td className="text-right">{reviewCounts[item.food_title]}</td>
+                                        <td>
                                             <button
-
-                                                className="btn bg-orange-500 text-white">
-                                                View Meal
+                                                onClick={() => handleDeleteItem(item)}
+                                                className="btn btn-ghost btn-lg">
+                                                <FaTrashAlt className="text-orange-600" />
                                             </button>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            );
-                        })}
+                                        </td>
+                                        <td>
+                                            <Link to={`/meal/${ids}`}>
+                                                <button className="btn bg-orange-500 text-white">
+                                                    View Meal
+                                                </button>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                     </tbody>
+
 
 
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 

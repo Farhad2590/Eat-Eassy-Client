@@ -4,12 +4,13 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 const MealRequest = () => {
     const axiosSecure = useAxiosPublic()
     const {
-        data: requested = [],
+        data: requested = [],refetch,
     } = useQuery({
         queryKey: ['requested',],
         queryFn: async () => {
@@ -36,14 +37,8 @@ const MealRequest = () => {
                 console.log(res.data);
                 if (res.data.deletedCount > 0) {
                     // refetch to update the ui
-                    // refetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${item.title} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    refetch();
+                    toast.success(`${item.food_title} has been deleted`);
                 }
             }
         });
@@ -53,7 +48,7 @@ const MealRequest = () => {
             {/* <p>sss{totalPrice}</p> */}
             <SharedTitle heading="My Requested Meals" subHeading="Requester Meals For Me"></SharedTitle>
 
-            <div className="flex justify-between mb-5">
+            {/* <div className="flex justify-between mb-5">
                 <div>
                     <h1 className="text-2xl font-bold bg-orange-500 rounded-lg text-white p-5">Requested Items :{requested.length}</h1>
                 </div>
@@ -67,7 +62,7 @@ const MealRequest = () => {
                         </Link> :
                         <button disabled className=" bg-orange-500 text-white text-2xl p-5">Pay Now</button>
                 }
-            </div> 
+            </div>  */}
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}

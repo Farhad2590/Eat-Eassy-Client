@@ -5,15 +5,18 @@ import useUpcommingMeals from "../../hooks/useUpcommingMeals";
 
 
 const Upcomming = () => {
-    const[upcommingMeals] = useUpcommingMeals()
+    const [upcommingMeals,,refetch] = useUpcommingMeals()
     console.log(upcommingMeals);
     return (
         <div>
             <SharedTitle heading="Upcomming Meals" subHeading="Meals We Are Adding"></SharedTitle>
-            {
-                upcommingMeals.map(meal => (
-                    <Upcomming_Meals key={meal._id} meal={meal} />
-                ))}
+            <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                {
+                    upcommingMeals.map(meal => (
+                        <Upcomming_Meals key={meal._id} refetch={refetch} meal={meal} />
+                    ))
+                }
+            </div>
         </div>
     );
 };

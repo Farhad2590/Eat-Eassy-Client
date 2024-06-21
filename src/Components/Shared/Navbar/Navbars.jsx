@@ -52,15 +52,15 @@ const Navbars = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                <li>
+                                <NavLink className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>
                                     <a className="justify-between">
                                         {
                                             user && user.displayName
                                         }
                                     </a>
-                                </li>
-                                <NavLink to={'/dashboard/profile'}>Dashboard</NavLink>
-                                <li><button onClick={logOut}>Logout</button></li>
+                                </NavLink>
+                                <NavLink to={'/dashboard/profile'} className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'}>Dashboard</NavLink>
+                                <NavLink ><button className={({ isActive }) => isActive ? 'btn btn-outline border border-orange-400 text-orange-400  hover:outline-none' : ' bg-orange-400 py-4 px-6 rounded-lg text-white font-bold'} onClick={logOut}>Logout</button></NavLink>
                             </ul>
                         </div>
 
