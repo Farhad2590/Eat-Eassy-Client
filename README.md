@@ -1,8 +1,8 @@
 # EatEassy Website
 
 ### Admin Credentials:
-- **Username:** admin
-- **Password:** [your_secure_password]
+- **Username:** farhadhossenph@gmail.com
+- **Password:** Farhad2590@
 
 ### Live Site URL:
 [https://eateassy-41e3e.web.app](https://eateassy-41e3e.web.app)
