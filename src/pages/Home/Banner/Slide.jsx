@@ -9,7 +9,7 @@ const Slide = ({ image, text }) => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8000/search?query=${query}`);
+      const response = await axios.get(`https://b9a12-server-side-eta.vercel.app/search?query=${query}`);
       setResults(response.data);
     } catch (error) {
       console.error('Error fetching search results:', error);

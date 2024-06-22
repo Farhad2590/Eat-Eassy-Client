@@ -66,7 +66,7 @@ const MealDetails = () => {
 
         try {
             const { data } = await axios.post(
-                'http://localhost:8000/mealRequest', mealData)
+                'https://b9a12-server-side-eta.vercel.app/mealRequest', mealData)
             console.log(data)
             toast.success('Meal Request Posted Successfully')
             refetch()
@@ -98,7 +98,7 @@ const MealDetails = () => {
 
         try {
             const { data } = await axios.post(
-                'http://localhost:8000/reviews', reviewData)
+                'https://b9a12-server-side-eta.vercel.app/reviews', reviewData)
             console.log(data)
             toast.success('Review Posted Successfully')
             refetch()

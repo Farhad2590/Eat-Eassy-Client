@@ -1,8 +1,11 @@
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
-const img1 ="https://i.ibb.co/WBVMSmQ/magicstudio-fy8b73.png"
-const img2 ="https://i.ibb.co/Cbhx63N/magicstudio-r0c64z.png"
-const img3 ="https://i.ibb.co/Kz8ZtH4/magicstudio-6n1a4r.png"
+const img1 ="https://i.ibb.co/1YV0PWN/magicstudio-fy8b73.png"
+const img2 ="https://i.ibb.co/fq5H86b/magicstudio-r0c64z.png"
+const img3 ="https://i.ibb.co/r7DSbsN/magicstudio-6n1a4r.png"
 const img4 ="https://i.ibb.co/6rKDkDN/magicstudio-noy4b8.png"
+
+
+
 const Sepecial = () => {
     return (
         <div>

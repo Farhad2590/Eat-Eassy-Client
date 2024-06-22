@@ -12,25 +12,35 @@ const Meal = () => {
     const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`http://localhost:8000/all-meals?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`)
-            setMeal(data)
-
-        }
+            setLoading(true);
+            try {
+                const { data } = await axios(`https://b9a12-server-side-eta.vercel.app/all-meals?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`);
+                setMeal(data);
+            } finally {
+                setLoading(false);
+            }
+        };
         getData()
-    }, [currentPage, filter, itemsPerPage, sort,search])
+    }, [currentPage, filter, itemsPerPage, sort, search])
 
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`http://localhost:8000/meals-count?filter=${filter}&search=${search}`)
-            setCount(data.count)
+        const getCount = async () => {
+            setLoading(true); // Set loading to true when fetching data
+            try {
+                const { data } = await axios(`https://b9a12-server-side-eta.vercel.app/meals-count?filter=${filter}&search=${search}`);
+                setCount(data.count);
+            } finally {
+                setLoading(false); // Set loading to false after fetching data
+            }
+        };
 
-        }
-        getData()
-    }, [filter,search])
+        getCount();
+    }, [filter, search]);
 
     //  handle pagination button
     const handlePaginationButton = value => {
@@ -40,9 +50,9 @@ const Meal = () => {
 
     const handleSearch = e => {
         e.preventDefault()
-    
+
         setSearch(searchText)
-      }
+    }
 
 
     const handleReset = () => {
@@ -62,6 +72,9 @@ const Meal = () => {
                 <div>
                     <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
                         <div>
+                            {loading && <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>}
                             <select
                                 onChange={e => {
                                     setFilter(e.target.value)

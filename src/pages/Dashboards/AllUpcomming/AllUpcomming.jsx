@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 import useUpcommingMeals from "../../../hooks/useUpcommingMeals";
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 const AllUpcomming = () => {
+    const axiosPublic = useAxiosPublic()
     const [upcommingMeals, , refetch] = useUpcommingMeals();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
-
+    
+    const handlePublishMeals = async item => {
+        console.log(item);
+        const mealRes = await axiosPublic.post('/meals', item);
+        console.log(mealRes.data)
+    }
     const sortedMeals = [...upcommingMeals].sort((a, b) => b.likes - a.likes);
 
     // Calculate the total number of pages
@@ -55,7 +63,7 @@ const AllUpcomming = () => {
                                 <td className="text-right">{item.likes}</td>
                                 <td className="text-right">{item.admin_name}</td>
                                 <td>
-                                    <button className="btn bg-orange-500 text-white">View Meal</button>
+                                    <button onClick={() => handlePublishMeals(item)} className="btn bg-orange-500 text-white">Publish Meal</button>
                                 </td>
                             </tr>
                         ))}
