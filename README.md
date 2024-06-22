@@ -5,7 +5,7 @@
 - **Password:** [your_secure_password]
 
 ### Live Site URL:
-[https://www.mealhub.com](https://www.mealhub.com)
+[https://eateassy-41e3e.web.app](https://eateassy-41e3e.web.app)
 
 ---
 
