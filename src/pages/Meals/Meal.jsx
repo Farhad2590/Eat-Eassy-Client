@@ -62,7 +62,7 @@ const Meal = () => {
         setSearchText('')
     }
 
-    console.log(count);
+    // console.log(count);
 
     const numberOfPages = Math.ceil(count / itemsPerPage)
     const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
@@ -70,11 +70,12 @@ const Meal = () => {
         <div>
             <div className='container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
                 <div>
+                    {loading && <div className="spinner-border text-primary text-center" role="status">
+                        <span className="loading loading-infinity loading-lg text-orange-500 "></span>
+                    </div>}
                     <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
                         <div>
-                            {loading && <div className="spinner-border text-primary" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>}
+
                             <select
                                 onChange={e => {
                                     setFilter(e.target.value)

@@ -13,7 +13,7 @@ const ServedMeals = () => {
 
     const axiosSecure = useAxiosPublic()
     const {
-        data: requested = [], refetch,
+        data: requested = [], isLoading, refetch,
     } = useQuery({
         queryKey: ['requested',],
         queryFn: async () => {
@@ -47,37 +47,47 @@ const ServedMeals = () => {
     return (
         <div>
             <SharedTitle heading="Served Meals" subHeading="Requested Meals To Serve"></SharedTitle>
-
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Item Name</th>
-                            <th>User Email</th>
-                            <th>User Name</th>
-                            <th>Likes</th>
-
-                            <th>View Meal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentMeals.map((item, index) => (
-                            <tr key={item._id}>
-                                <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
-                                <td>{item.title}</td>
-                                <td>{item.user_email}</td>
-                                <td className="">{item.user_name}</td>
-                                <td className="">{item.status}</td>
-
-                                <td>
-                                    <button onClick={() => handleServedMeals(item)} className="btn bg-orange-500 text-white">Publish</button>
-                                </td>
+            {isLoading ? (
+                <div className="spinner-border text-primary text-center" role="status">
+                    <span className="loading loading-infinity loading-lg text-orange-500 "></span>
+                </div>
+            ) :
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Item Name</th>
+                                <th>User Email</th>
+                                <th>User Name</th>
+                                <th>Status</th>
+                                <th>Publish Meal</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {currentMeals.map((item, index) => (
+                                <tr key={item._id}>
+                                    <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                                    <td>{item.title}</td>
+                                    <td>{item.user_email}</td>
+                                    <td className="">{item.user_name}</td>
+                                    <td className="">{item.status}</td>
+
+                                    <td>
+                                        {
+                                            item.status === 'served' ?
+                                            <button disabled className="btn bg-orange-500 text-white">Publish</button>
+                                            :
+                                            <button onClick={() => handleServedMeals(item)} className="btn bg-orange-500 text-white">Publish</button>
+                                    }
+                                        
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            }
 
             <div className="pagination flex justify-center mt-4">
                 <button

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-
-// import axios from 'axios'
+import backgroundImage from '../../assets/bg.jpeg';
 import useAuth from '../../hooks/useAuth'
 import toast from 'react-hot-toast'
 import useAxiosPublic from '../../hooks/useAxiosPublic'
@@ -50,9 +49,9 @@ const SignUp = () => {
 
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
-        <div className='mb-8 text-center'>
+    <div className='flex justify-center items-center min-h-screen' style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 text-gray-900 bg-white bg-opacity-90'>
+        <div className='mb-2 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
           <p className='text-sm text-gray-400'>Welcome to Eateassy</p>
         </div>
@@ -92,33 +91,29 @@ const SignUp = () => {
             {errors.password?.type === 'minLength' && <p className="text-orange-500">Password must be 6 characters</p>}
             {errors.password?.type === 'maxLength' && <p className="text-orange-500">Password must be less than 20 characters</p>}
             {errors.password?.type === 'pattern' && <p className="text-orange-500">Password must have one Uppercase one lower case, one number and one special character.</p>}
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-            </label>
+            
           </div>
           <div className="form-control mt-6">
-            <input className="btn btn-primary bg-orange-500 text-white" type="submit" value="Sign Up" />
+            <input className="btn bg-orange-500 text-white" type="submit" value="Sign Up" />
           </div>
         </form>
-        <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
+        <div className='flex flex-col items-center pt-4 space-x-1'>
+          <p className=' text-sm dark:text-gray-400'>
             Signup with social accounts
           </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'>
+          <div className='flex dark:bg-gray-700'>
             <SocialLogin></SocialLogin>
           </div>
+          <p className=' text-sm text-gray-400'>
+            Already have an account?{' '}
+            <Link
+              to='/login'
+              className='hover:underline hover:text-orange-500 text-gray-600'
+            >
+              Login
+            </Link>
+          </p>
         </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
-          Already have an account?{' '}
-          <Link
-            to='/login'
-            className='hover:underline hover:text-orange-500 text-gray-600'
-          >
-            Login
-          </Link>
-          .
-        </p>
       </div>
     </div>
   )
