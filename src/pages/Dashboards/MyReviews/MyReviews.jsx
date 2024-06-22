@@ -8,6 +8,7 @@ import useMeals from "../../../hooks/useMeals";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Spinner from "../../../Components/Shared/Spinner/Spinner";
 
 const MyReviews = () => {
     const [menu] = useMeals();
@@ -16,10 +17,10 @@ const MyReviews = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
-    const { data: reviews = [], refetch } = useQuery({
-        queryKey: ["reviews", user.email],
+    const { data: reviews = [],isPending: loading, refetch } = useQuery({
+        queryKey: ["reviews", user?.email],
         queryFn: async () => {
-            const { data } = await axiosPublic(`/reviews/${user.email}`);
+            const { data } = await axiosPublic(`/reviews/${user?.email}`);
             return data;
         },
     });
@@ -35,7 +36,7 @@ const MyReviews = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/reviews/${item._id}?email=${user.email}`);
+                const res = await axiosPublic.delete(`/reviews/${item._id}?email=${user?.email}`);
                 if (res.data.deletedCount > 0) {
                     toast.success(`${item.food_title} has been deleted`);
                     refetch();
@@ -50,7 +51,9 @@ const MyReviews = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentReviews = reviews.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(reviews.length / itemsPerPage);
-
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <div>
             <SharedTitle heading="My Reviews" subHeading="Reviews From Our Daily Users"></SharedTitle>

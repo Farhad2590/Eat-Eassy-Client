@@ -34,7 +34,7 @@ const Addmeals = () => {
                 likes: parseFloat(data.likes),
                 rating: data.ratings,
                 admin_name: user.displayName,
-                email: user.email,
+                email: user?.email,
                 admin_photo: user.photoURL
             }
             console.log(mealItem);
@@ -116,7 +116,7 @@ const Addmeals = () => {
                     {/* likes */}
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Price*</span>
+                            <span className="label-text">Likes*</span>
                         </label>
                         <input
                             type="number"

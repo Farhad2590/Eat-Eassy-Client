@@ -1,8 +1,23 @@
-# React + Vite
+# EatEassy Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Admin Credentials:
+- **Username:** admin
+- **Password:** [your_secure_password]
 
-Currently, two official plugins are available:
+### Live Site URL:
+[https://www.mealhub.com](https://www.mealhub.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## Features:
+- **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
+- **Meal Categories:** Categorize meals into Breakfast, Lunch, Dinner for easy navigation.
+- **Search Functionality:** Users can easily find meals using search functionality.
+- **Sorting:** Sort meals by various criteria such as price, popularity, or category.
+- **Payment History:** View detailed history of payments made for meals.
+- **Meal Likes:** Users can like their favorite meal cards.
+- **Upcoming Meals Feature:** Exclusive previews of upcoming meals for membership holders.
+- **User Profiles:** Personalized user profiles with meal preferences and favorite lists.
+- **Responsive Design:** Optimized for mobile and desktop devices.
+- **Admin Dashboard:** Manage meals, users, payments, and site content through an intuitive admin interface.
+

@@ -8,20 +8,20 @@ import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 import useMeals from "../../../hooks/useMeals";
 import { Link } from "react-router-dom";
 
-
+const PAGE_SIZE = 10; // Number of items per page
 
 const AllReviews = () => {
-    const [review, , refetch] = useReview();
-    const [menu] = useMeals()
-    // const [menu] = useMeals();
-    const axiosPublic = useAxiosPublic()
+    const [review, loading, refetch] = useReview();
+    const [menu] = useMeals();
+    const axiosPublic = useAxiosPublic();
     const [reviewCounts, setReviewCounts] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         // Function to calculate review counts by food_title
         const calculateReviewCounts = () => {
             const counts = {};
-            review.forEach(item => {
+            review.forEach((item) => {
                 if (item.food_title in counts) {
                     counts[item.food_title]++;
                 } else {
@@ -33,8 +33,8 @@ const AllReviews = () => {
 
         calculateReviewCounts();
     }, [review]);
-    const handleDeleteItem = (item) => {
-        console.log(item);
+
+    const handleDeleteItem = async (item) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -46,69 +46,69 @@ const AllReviews = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosPublic.delete(`/reviews/${item._id}`);
-                console.log(res.data);
                 if (res.data.deletedCount > 0) {
-                    toast.success(`${item.food_title} has been deleted`)
-                    // refetch to update the ui
+                    toast.success(`${item.food_title} has been deleted`);
                     refetch();
                 }
-
-
             }
         });
-    }
+    };
 
-    // const handleViewMeal = (e) => {
-    //     console.log(e);
-    //     const mealDetails = menu.find(meals => meals.title === e.food_title);
-    //     console.log(mealDetails);
-    // }
+    const currentReviews = review.filter((item) => {
+        const meal = menu.find((meal) => meal.title === item.food_title);
+        return meal && meal.likes > 0;
+    });
 
-    console.log(menu);
+    // Pagination logic
+    const totalPages = Math.ceil(currentReviews.length / PAGE_SIZE);
+    const indexOfLastItem = currentPage * PAGE_SIZE;
+    const indexOfFirstItem = indexOfLastItem - PAGE_SIZE;
+    const currentPaginatedReviews = currentReviews.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div>
-            <SharedTitle heading="All Reviews" subHeading="Reviews From Our Daily Users"></SharedTitle>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>Item Name</th>
-                            <th>Likes</th>
-                            <th>Reviews count</th>
-                            <th>Delete</th>
-                            <th>View Meal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {review
-                            .filter(item => {
-                                const meal = menu.find(meal => meal.title === item.food_title);
-                                return meal && meal.likes > 0; // Only include items with more than 0 likes
-                            })
-                            .map((item, index) => {
-                                const meal = menu.find(meal => meal.title === item.food_title);
-                                const likes = meal ? meal.likes : 0; // Default to 0 likes if meal is not found
-                                const ids = meal ? meal._id : 0;
-                                console.log(likes);
+            <SharedTitle heading="All Reviews" subHeading="Reviews From Our Daily Users" />
+            {loading ? (
+                <div className="flex justify-center items-center h-screen">
+                    <div className="loader"></div>
+                </div>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra w-full">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Item Name</th>
+                                <th>Likes</th>
+                                <th>Reviews Count</th>
+                                <th>Delete</th>
+                                <th>View Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentPaginatedReviews.map((item, index) => {
+                                const meal = menu.find((meal) => meal.title === item.food_title);
+                                const likes = meal ? meal.likes : 0;
+                                const mealId = meal ? meal._id : 0;
+
                                 return (
                                     <tr key={item._id}>
-                                        <td>{index + 1}</td>
+                                        <th>{indexOfFirstItem + index + 1}</th>
                                         <td>{item.food_title}</td>
-                                        <td className="text-right">{likes}</td>
-                                        <td className="text-right">{reviewCounts[item.food_title]}</td>
+                                        <td>{likes}</td>
+                                        <td>{reviewCounts[item.food_title]}</td>
                                         <td>
                                             <button
                                                 onClick={() => handleDeleteItem(item)}
-                                                className="btn btn-ghost btn-lg">
+                                                className="btn btn-ghost btn-lg"
+                                            >
                                                 <FaTrashAlt className="text-orange-600" />
                                             </button>
                                         </td>
                                         <td>
-                                            <Link to={`/meal/${ids}`}>
+                                            <Link to={`/meal/${mealId}`}>
                                                 <button className="btn bg-orange-500 text-white">
                                                     View Meal
                                                 </button>
@@ -117,13 +117,36 @@ const AllReviews = () => {
                                     </tr>
                                 );
                             })}
-                    </tbody>
-
-
-
-                </table>
-            </div>
-        </div >
+                        </tbody>
+                    </table>
+                    <div className="pagination flex justify-center mt-4">
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="btn mx-1"
+                        >
+                            Previous
+                        </button>
+                        {[...Array(totalPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => paginate(index + 1)}
+                                className={`btn mx-1 ${currentPage === index + 1 ? 'btn-active' : ''}`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="btn mx-1"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };
 

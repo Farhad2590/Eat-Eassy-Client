@@ -2,20 +2,24 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
+import Spinner from "../../../Components/Shared/Spinner/Spinner";
 
 
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: payments = [] } = useQuery({
-        queryKey: ['payments', user.email],
+    const { data: payments = [],isPending: loading, } = useQuery({
+        queryKey: ['payments', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments/${user.email}`)
+            const res = await axiosSecure.get(`/payments/${user?.email}`)
             return res.data;
         }
     })
-    console.log(payments);
+    // console.log(payments);
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <div>
             <SharedTitle heading="Payment History" subHeading="You Payment History"></SharedTitle>

@@ -14,16 +14,21 @@ import logo from "../assets/Logo.png"
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import Spinner from "../Components/Shared/Spinner/Spinner";
+// import useRole from "../hooks/useRole";
 
 
 
 const Dashboard = () => {
     const { user } = useAuth()
-
+    // const[role]= useRole()
     
-    const [isAdmin] = useAdmin();
+    const [isAdmin,isAdminLoading] = useAdmin();
 
-
+    if (isAdminLoading) {
+        return <Spinner />;
+    }
+    console.log(isAdmin);
 
     return (
 

@@ -7,6 +7,7 @@ import Sepecial from "./Special/Sepecial";
 
 
 const Home = () => {
+    
     return (
         <div>
             <Banner></Banner>

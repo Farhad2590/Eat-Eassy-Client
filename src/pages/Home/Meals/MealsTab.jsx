@@ -5,15 +5,18 @@ import 'react-tabs/style/react-tabs.css'
 import MealsCategory from '../../../Components/Shared/Shared/MealsCategory'
 import SharedTitle from '../../../Components/Shared/Sharedtitle/SharedTitle'
 import useMeals from '../../../hooks/useMeals'
+import Spinner from '../../../Components/Shared/Spinner/Spinner'
 const TabCategories = () => {
 
-    const [meals] = useMeals();
-
+    const [meals,loading] = useMeals();
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <Tabs className='bg-white p-5'>
             <div className=''>
                <SharedTitle heading="Food We Are Offering" subHeading="Best Meal Suggesion In town"></SharedTitle>
-                {meals.length}
+                
                 <div className='flex items-center justify-center'>
                     <TabList>
                         <Tab>All</Tab>

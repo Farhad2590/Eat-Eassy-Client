@@ -1,27 +1,44 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 // import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useRole from "../../../hooks/useRole";
+// import useRole from "../../../hooks/useRole";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useMeals from "../../../hooks/useMeals";
+import Spinner from "../../../Components/Shared/Spinner/Spinner";
 
 
 const Profile = () => {
-    const { user, loading } = useAuth()
-    const [role] = useRole()
+    const { user } = useAuth()
+    // const [role,isLoading] = useRole()
     const axiosSecure = useAxiosPublic()
-    // console.log(role);
-    // const axiosPublic = useAxiosPublic()
-    const { data: payments = [] } = useQuery({
+
+    // console.log(user.email);
+
+    const {
+        data: meals = [],refetch,
+    } = useQuery({
+        queryKey: ['meals', user?.email],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/meals/${user?.email}`);
+            return data;
+        },
+    });
+    console.log(meals)
+
+
+    const { data: payments = [], isLoading} = useQuery({
         queryKey: ['payments'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments/${user.email}`)
+            const res = await axiosSecure.get(`/payments/${user?.email}`)
             return res.data;
         }
     })
 
-    const profile = payments.find(payment => payment.email === user.email);
+    const profile = payments.find(payment => payment.email === user?.email);
 
-
+    if (isLoading) {
+        return <Spinner />;
+    }
     return (
         <div className="max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg" >
             <div className="border-b px-4 pb-6">
@@ -40,7 +57,7 @@ const Profile = () => {
                 </div>
                 <div className="flex gap-2 px-2">
                     <button className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white antialiased font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2">
-                        {role}
+                        {meals?.length}
                     </button>
                     <button className="flex-1 rounded-full border-2 border-gray-400 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
                         {profile?.membership}

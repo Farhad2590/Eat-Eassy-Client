@@ -5,14 +5,30 @@ import { FcLike } from 'react-icons/fc';
 import { LuCircleDollarSign } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../../hooks/useAuth';
+import Spinner from '../Spinner/Spinner';
 
-const Upcomming_Meals = ({ meal, refetch }) => {
+const Upcomming_Meals = ({ meal,loading, refetch }) => {
     const { _id, image, title, price, description, rating, category, likes } = meal;
+    const {user} = useAuth()
 
     const axiosSecure = useAxiosPublic()
-
+    const { data: payments = [] } = useQuery({
+        queryKey: ['payments'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/payments`)
+            return res.data;
+        }
+    })
+   
+    const userPayment = payments.find(payment => payment.email === user?.email);
+    
+    const Membership = userPayment?.membership
     const handleLike = (id) => {
-        const menuItem = { likes: likes + 1 };
+        
+        if(Membership === 'Silver' || Membership === 'Gold' || Membership === 'Platinum'){
+            const menuItem = { likes: likes + 1 };
         // console.log(id, menuItem);
 
         axiosSecure.patch(`/upcommingMeals/${id}`, menuItem)
@@ -26,7 +42,14 @@ const Upcomming_Meals = ({ meal, refetch }) => {
                 toast.error('Failed to update like');
             }
             );
+        }else{
+            toast.error('Yo Cant Like This Card, You Are Not Premium Member');
+        }
+        
     };
+    if (loading) {
+        return <Spinner />;
+    }
 
     return (
         <div className="border rounded-lg shadow-md flex flex-col mb-10">

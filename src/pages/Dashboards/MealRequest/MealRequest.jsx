@@ -6,22 +6,23 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
+import Spinner from "../../../Components/Shared/Spinner/Spinner";
 
 
 const MealRequest = () => {
     const axiosSecure = useAxiosPublic()
     const {user} = useAuth()
-    console.log(user.email);
+
     const {
-        data: requested = [],refetch,
+        data: requested = [],isPending: loading,refetch,
     } = useQuery({
-        queryKey: ['requested', user.email],
+        queryKey: ['requested', user?.email],
         queryFn: async () => {
-            const { data } = await axiosSecure(`/requested_meals/${user.email}`);
+            const { data } = await axiosSecure(`/requested_meals/${user?.email}`);
             return data;
         },
     });
-    console.log(requested)
+
     
     const handleDeleteItem = (item) => {
         console.log(item);
@@ -44,6 +45,9 @@ const MealRequest = () => {
                 }
             }
         });
+    }
+    if (loading) {
+        return <Spinner />;
     }
     return (
         <div>

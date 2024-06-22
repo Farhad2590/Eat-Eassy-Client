@@ -12,6 +12,8 @@ const Managemeals = () => {
     const axiosPublic = useAxiosPublic();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
+    const [sortBy, setSortBy] = useState(null); // 'likes', 'reviews'
+    const [sortOrder, setSortOrder] = useState('asc'); // 'asc', 'desc'
 
     const handleDeleteItem = (item) => {
         Swal.fire({
@@ -33,17 +35,68 @@ const Managemeals = () => {
         });
     };
 
+    // Sorting logic
+    const sortedMeals = [...menu].sort((a, b) => {
+        if (sortBy === 'likes') {
+            if (sortOrder === 'asc') {
+                return a.likes - b.likes;
+            } else {
+                return b.likes - a.likes;
+            }
+        } else if (sortBy === 'reviews') {
+            const reviewsA = a.reviews ? a.reviews.length : 0;
+            const reviewsB = b.reviews ? b.reviews.length : 0;
+            if (sortOrder === 'asc') {
+                return reviewsA - reviewsB;
+            } else {
+                return reviewsB - reviewsA;
+            }
+        }
+        return 0;
+    });
+
     // Pagination logic
-    const totalPages = Math.ceil(menu.length / itemsPerPage);
-    const currentMeals = menu.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const totalPages = Math.ceil(sortedMeals.length / itemsPerPage);
+    const currentMeals = sortedMeals.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
 
+    // Toggle sorting criteria
+    const handleSortBy = (criteria) => {
+        if (sortBy === criteria) {
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortBy(criteria);
+            setSortOrder('asc');
+        }
+        setCurrentPage(1); // Reset pagination to first page
+    };
+
     return (
         <div>
             <SharedTitle heading="All Meals" subHeading="Our Regular Meals"></SharedTitle>
+
+            <div className="flex justify-between mb-4">
+                <div>
+                    <button
+                        className={`btn mx-2 ${sortBy === 'likes' ? 'btn-active bg-orange-500 text-white' : ''}`}
+                        onClick={() => handleSortBy('likes')}
+                    >
+                        Sort by Likes {sortBy === 'likes' && sortOrder === 'asc' && <>&uarr;</>}
+                        {sortBy === 'likes' && sortOrder === 'desc' && <>&darr;</>}
+                    </button>
+                    <button
+                        className={`btn mx-2 ${sortBy === 'reviews' ? 'btn-active bg-orange-500 text-white' : ''}`}
+                        onClick={() => handleSortBy('reviews')}
+                    >
+                        Sort by Reviews {sortBy === 'reviews' && sortOrder === 'asc' && <>&uarr;</>}
+                        {sortBy === 'reviews' && sortOrder === 'desc' && <>&darr;</>}
+                    </button>
+                </div>
+
+            </div>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -103,6 +156,7 @@ const Managemeals = () => {
                     </tbody>
                 </table>
             </div>
+
             <div className="pagination flex justify-center mt-4">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}

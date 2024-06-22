@@ -3,10 +3,11 @@ import SharedTitle from "../../../Components/Shared/Sharedtitle/SharedTitle";
 import useUpcommingMeals from "../../../hooks/useUpcommingMeals";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import Spinner from '../../../Components/Shared/Spinner/Spinner';
 
 const AllUpcomming = () => {
     const axiosPublic = useAxiosPublic()
-    const [upcommingMeals, , refetch] = useUpcommingMeals();
+    const [upcommingMeals,loading , refetch] = useUpcommingMeals();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
     
@@ -27,7 +28,9 @@ const AllUpcomming = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <div>
             <SharedTitle heading="All Upcoming Meals" subHeading="Our Regular Meals"></SharedTitle>
