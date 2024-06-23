@@ -22,6 +22,8 @@ import PaymentHistory from '../pages/Dashboards/PaymentHistory/PaymentHistory'
 import AllUpcomming from '../pages/Dashboards/AllUpcomming/AllUpcomming'
 import PrivateRoute from './PrivateRoute'
 import ServedMeals from '../pages/Dashboards/ServedMeals/ServedMeals'
+import AdminRoute from './AdminRoute'
+
 
 
 export const router = createBrowserRouter([
@@ -58,19 +60,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'allUsers',
-        element: <ManageUser></ManageUser>
+        element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
       },
       {
         path: 'addMeals',
-        element: <Addmeals></Addmeals>
+        element: <AdminRoute><Addmeals></Addmeals></AdminRoute>
       },
       {
         path: 'allMeals',
-        element: <Managemeals></Managemeals>
+        element: <AdminRoute><Managemeals></Managemeals></AdminRoute>
       },
       {
         path: 'allReviews',
-        element: <AllReviews></AllReviews>
+        element: <AdminRoute><AllReviews></AllReviews></AdminRoute>
       },
       {
         path: 'profile',
@@ -82,6 +84,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allupcomingMeals',
+        
         element: <AllUpcomming></AllUpcomming>
       },
       {
@@ -102,7 +105,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'serveMeals',
-        element: <ServedMeals></ServedMeals>
+        element:<AdminRoute><ServedMeals></ServedMeals></AdminRoute>
       },
       {
         path: 'paymentHistory',

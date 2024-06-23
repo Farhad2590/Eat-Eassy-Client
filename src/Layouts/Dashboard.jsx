@@ -22,8 +22,8 @@ import Spinner from "../Components/Shared/Spinner/Spinner";
 const Dashboard = () => {
     const { user } = useAuth()
     // const[role]= useRole()
-    
-    const [isAdmin,isAdminLoading] = useAdmin();
+
+    const [isAdmin, isAdminLoading] = useAdmin();
 
     if (isAdminLoading) {
         return <Spinner />;
@@ -32,11 +32,11 @@ const Dashboard = () => {
 
     return (
 
-        <div className="flex">
-            <aside className="flex flex-col w-64 min-h-screen bg-orange-400 px-2 py-4">
+        <div className="flex flex-col md:flex-row">
+            <aside className="flex flex-col w-full md:w-64 lg:min-h-screen bg-orange-400 px-2 py-4">
                 <Link to="/" className="mx-auto bg-white">
                     <img
-                        className='w-64'
+                        className='w-32 md:w-64'
                         src={logo}
                         alt='logo'
                     />
@@ -55,74 +55,85 @@ const Dashboard = () => {
                                 <>
                                     <li className="">
                                         <NavLink to="/dashboard/profile" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <FaHome></FaHome>
-                                            Admin Home</NavLink>
+                                            <FaHome />
+                                            Admin Home
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/allUsers" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <FaUsers></FaUsers>
-                                            All Users</NavLink>
+                                            <FaUsers />
+                                            All Users
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/addMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <IoMdAddCircle></IoMdAddCircle>
-                                            Add Meal</NavLink>
+                                            <IoMdAddCircle />
+                                            Add Meal
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/allMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <FaList></FaList>
-                                            All Meals</NavLink>
+                                            <FaList />
+                                            All Meals
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/allReviews" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <MdReviews></MdReviews>
-                                            All Reviews</NavLink>
+                                            <MdReviews />
+                                            All Reviews
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/serveMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <PiHandCoinsFill></PiHandCoinsFill>
-                                            Serve Meals</NavLink>
+                                            <PiHandCoinsFill />
+                                            Serve Meals
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/upcomingMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <MdUpcoming></MdUpcoming>
-                                            Add Upcoming Meals</NavLink>
+                                            <MdUpcoming />
+                                            Add Upcoming Meals
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/allupcomingMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <IoMdAddCircle></IoMdAddCircle>
-                                            All Upcoming Meals</NavLink>
+                                            <IoMdAddCircle />
+                                            All Upcoming Meals
+                                        </NavLink>
                                     </li>
                                 </>
                                 :
                                 <>
                                     <li>
                                         <NavLink to="/dashboard/profile" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <CgProfile></CgProfile>
-                                            My Profile</NavLink>
+                                            <CgProfile />
+                                            My Profile
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/requestedMeals" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <FaCalendar></FaCalendar>
-                                            Requested Meals</NavLink>
+                                            <FaCalendar />
+                                            Requested Meals
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/myReviews" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <MdReviews></MdReviews>
+                                            <MdReviews />
                                             My Reviews
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/paymentHistory" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                            <MdOutlinePayment></MdOutlinePayment>
-                                            Payment History</NavLink>
+                                            <MdOutlinePayment />
+                                            Payment History
+                                        </NavLink>
                                     </li>
                                 </>
                         }
-                        <div className="divider"></div>
+                        <div className="border-t mt-6"></div>
                         <li>
                             <NavLink to="/" className="flex items-center justify-center gap-2 p-2 text-black bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200">
-                                <FaHome></FaHome>
+                                <FaHome />
                                 Home
                             </NavLink>
                         </li>
@@ -130,10 +141,11 @@ const Dashboard = () => {
                 </div>
             </aside>
             {/* dashboard content */}
-            <div className="flex-1 p-8">
-                <Outlet></Outlet>
+            <div className="flex-1 p-4 md:p-8">
+                <Outlet />
             </div>
         </div>
+
     );
 };
 
