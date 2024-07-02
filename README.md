@@ -26,8 +26,10 @@ First, clone the repository to your local machine using Git.
 ```bash
 git clone https://github.com/Farhad2590/Eat-Eassy-Client.git
 cd eateassy
+```
 
-then run command npm i
+then run command 
+```npm i ```
 
 ## Features:
 - **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
