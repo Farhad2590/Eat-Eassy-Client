@@ -29,9 +29,18 @@ cd eateassy
 ```
 
 then run command <br>
-```npm i ``` <br>
+```npm i ``` >
 to Run in Localhost <br>
 ```npm run dev```
+
+## Technology Used:
+-React
+-Tailwind
+-Firebase
+-Mongodb
+-Express
+-Node js
+-Some Npm Packages
 
 ## Features:
 - **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
