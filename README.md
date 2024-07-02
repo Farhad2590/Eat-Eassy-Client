@@ -28,8 +28,10 @@ git clone https://github.com/Farhad2590/Eat-Eassy-Client.git
 cd eateassy
 ```
 
-then run command 
+then run command <br>
 ```npm i ```
+to Run in Localhost <br>
+```npm run dev```
 
 ## Features:
 - **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
