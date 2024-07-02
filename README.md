@@ -9,6 +9,26 @@
 
 ---
 
+## Installation Process
+
+Follow these steps to set up and run the project on your local machine.
+
+### Prerequisites
+
+Ensure you have the following software installed on your system:
+- [Node.js](https://nodejs.org/) (v14.x or higher recommended)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+
+### Clone the Repository
+
+First, clone the repository to your local machine using Git.
+
+```bash
+git clone https://github.com/Farhad2590/Eat-Eassy-Client.git
+cd eateassy
+
+then run command npm i
+
 ## Features:
 - **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
 - **Meal Categories:** Categorize meals into Breakfast, Lunch, Dinner for easy navigation.

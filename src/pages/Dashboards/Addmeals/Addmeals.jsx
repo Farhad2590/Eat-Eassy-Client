@@ -35,7 +35,7 @@ const Addmeals = () => {
                 rating: data.ratings,
                 admin_name: user.displayName,
                 email: user?.email,
-                admin_photo: user.photoURL
+                admin_photo: user?.photoURL
             }
             console.log(mealItem);
 

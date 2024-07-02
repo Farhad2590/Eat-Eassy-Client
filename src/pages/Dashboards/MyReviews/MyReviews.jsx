@@ -67,7 +67,7 @@ const MyReviews = () => {
             review, rating,
         }
         // console.log(reviewData);
-        const menuRes = await axiosPublic.put(`/UpDateReviews/${Id}`, reviewData);
+        const menuRes = await axiosPublic.put(`/upDateReviews/${Id}`, reviewData);
         console.log(menuRes.data)
     }
 
