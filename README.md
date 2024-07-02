@@ -34,14 +34,14 @@ to Run in Localhost <br>
 ```npm run dev```
 
 ## Technology Used:
--**React**
--**Tailwind**
--**Firebase**
+-**React**,
+-**Tailwind**,
+-**Firebase**,
 -**Mongodb**
 <br>
--**Express**
--**Node js**
--**Some Npm Packages**
+-**Express**,
+-**Node js**,
+-**Some Npm Packages**,
 
 ## Features:
 - **Secure Card Payments:** Users can pay securely using credit/debit cards via integrated payment gateway.
