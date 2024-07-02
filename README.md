@@ -29,7 +29,7 @@ cd eateassy
 ```
 
 then run command <br>
-```npm i ```
+```npm i ``` <br>
 to Run in Localhost <br>
 ```npm run dev```
 
